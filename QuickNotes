@@ -1,0 +1,17 @@
+QUESTIONS:
+
+	- On a le droit a une globale ? --> je crois!
+	
+
+
+
+
+NOTES:			CONNECTION REGISTRATION
+1.		CAP LS 302 (on ignore ca bien discretement, a voir si on fait un autre truc
+ avec, genre si client met CAP REIZJPEHZ Tamere, pour l'instant tant que ya CAP on 
+ ignore)
+Normalement, le user est considéré comme "Registered" a cette étape, je ne sais pas 
+si fonctionnellement ca change qqchose. BOn en fait la page de pass contredit ca
+
+2.		PASS:
+La on a le choix si pas de password: soit on close la connexion, soit on 

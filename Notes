@@ -1,0 +1,100 @@
+		/* ******************************************************************** */
+		/* ********************** PARTIE 1: SOCKET ACTION ********************* */
+		/* ******************************************************************** */
+
+
+	@DONE // 1. CREATE SOCKET AND BIND
+	@DONE // 2. MAKE SOCKET NON BLOCKING
+	@DONE // 3. PUT SOCKET ON LISTEN
+	@DONE // 4. EPOLL CREATE1 (RETURN A FILE DESCRIPTOR TO THE EPOLL)
+	@DONE	// 5. EPOLL CONFIGURATION
+	@DONE	// 6. EPOLL CTL, ADD ENTRY OF EVENT FOR A DESIGNATED FILE DESC.
+	@DONE	// 7. TABLE OF EVENTS CREATION
+
+		// ******************** LOOP ACTION BBY ************************
+		// while(1)
+		// 8. epoll_wait: Attend un certain temps et mets tous les events
+		// dans le tableau d'events
+		// 9. Check de probleme d'epoll pour chaque event
+		// 10. Si un event concerne le fd du socket: 
+			// 10-1: On l'accepte
+			// 10-2: (optionnel) on peut imprimer les infos du socket entrant
+			// 10-3: On passe le socket entrant en non-bloquant ()
+			// 10-4: On reconfigure le event (histoire de pas avoir a new, mais 
+			// ptetre quon aura besoin du event)
+			// 10-5: on rajoute le event a la liste de epoll a monitorer
+		// 11. Sinon: while(1)
+			// 11-1: read(events[i].data.fd, buf; BUFF_SIZE);
+			// 11-2: si errno == EAGAIN: all data has been read, mais nous
+			// ya moyen quon s'en tape, par contre gestion de crlf pour notre pomme
+			// 11-3 si count de read == 0, the remote has closed the connection
+			// 11-4: La du coup on peut ecrire ce quon a recu
+		/*
+		for (int i = 0; )
+		*/
+
+Bon en gros ca se passe comme ca je pense pour linstant:
+
+1.  A socket is created with socket(2).
+
+2.  The socket is bound to a local address using bind(2), so that other sockets may be connect(2)ed to it.
+
+3.	(listen()) A willingness to accept incoming connections and a queue limit for incoming connections are specified with listen().
+
+4. On cree un epoll quon va devoir garder tout le temps (probablement dans la class Server)
+
+
+A partir de la cest flou
+
+
+5. on rajoute le fd du serv ou de la socket dans le epoll, et on essaye de le distinguer des autres fds ?
+
+6.	On accepte les connections avec accept() et on recupere les fds
+pour les mettre dans epoll()
+
+7. Apres faut surveiller les fds des gens connectes, a moins que epoll() le fasse deja
+
+8. il faut aussi capter ou vont leur message, pcq si ya 2 msgs en meme temps ou est ce quils vont?
+
+9. traiter les msgs des clients
+
+10. renvoyer les bons msgs aux bons clients?
+
+
+Le gros point flou pour l'instant cest ce que cest quun event. Par exemple est ce que cest la fin de l'ecriture dun message ? Ou est ce que le message est envoye ? COmment on est sur que le truc est non bloquant ?
+
+
+
+    Listener – thread that performs bind() and listen() calls and waits for incoming conncetions. Then new connection arrives, this thread can do accept() on listening socket an send accepted connection socket to one of the I/O-workers.
+    I/O-Worker(s) – one or more threads to receive connections from listener and to add them to epoll. Main loop of the generic I/O-worker looks like last step of epoll using pattern described above.
+    Data Processing Worker(s) – one or more threads to receive data from and send data to I/O-workers and to perform data processing.
+
+--> Nous on doit faire tout ca en 1 seul thread.
+
+After first step you can add your descriptors to epoll with following call:
+
+  static struct epoll_event ev;
+  int client_sock;
+  ...
+  ev.events = EPOLLIN | EPOLLPRI | EPOLLERR | EPOLLHUP;
+  ev.data.fd = client_sock;
+  int res = epoll_ctl(epfd, EPOLL_CTL_ADD, client_sock, &ev);
+
+
+When all your descriptors will be added to epoll, your process can idle and wait to something to do with epoll’ed sockets:
+
+  while (1) {
+    // wait for something to do...
+    int nfds = epoll_wait(epfd, events,
+                                MAX_EPOLL_EVENTS_PER_RUN,
+                                EPOLL_RUN_TIMEOUT);
+    if (nfds < 0) die("Error in epoll_wait!");
+
+    // for each ready socket
+    for(int i = 0; i < nfds; i++) {
+      int fd = events[i].data.fd;
+      handle_io_on_socket(fd);
+    }
+  }
+
+cest pas dit explicitement si on a le droit a epoll_ctl, pour moi oui.

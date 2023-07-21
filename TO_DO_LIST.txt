@@ -1,0 +1,15 @@
+	- PASS
+	- USER
+	- NICKNAME
+	- Server::DisconnectUser a faire
+	- Channel a faire: 
+		- list user, 
+	- Gestion propre des déconnexions (supprimer le user sur toutes les listes)
+	- RUN server: peut etre revoir le systeme du "done" pour arreter la boucle
+		quand il y a une déconnexion
+
+
+Il faut un client IRC, ici IRSSI
+pour lancer le client, taper IRSSI
+/connect 127.0.0.1 8080 (en gros addresse et port)
+il faut configurer IRSSI

@@ -1,0 +1,7 @@
+	// La limite de caracteres, comment elle se passe ?
+	// Faut check au buffer, ou seulement au message ?
+
+
+	Pourquoi ya 4 arg a commandMessageBuilder?
+
+	
