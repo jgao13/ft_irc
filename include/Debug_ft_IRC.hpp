@@ -9,7 +9,7 @@
 // GREEN == tout ce qui est lancé par la classe Server
 // RED == Tout ce qui est lancé par User
 // BLUE == Tout ce qui est lancé par Channel
-// VIOLET == Command
+// VIOLET == Command Class et toutes les commandes
 
 namespace ft
 {

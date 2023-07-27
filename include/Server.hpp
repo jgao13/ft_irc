@@ -19,7 +19,6 @@
 #include "../include/Utils.hpp"
 #include "../include/Command.hpp"
 #include "User.hpp"
-#include "Nick.hpp"
 #include "Network.hpp"
 #include "Message_Format.hpp"
 #include "Debug_ft_IRC.hpp"
@@ -145,6 +144,7 @@ namespace ft
 			void	join(User * user, std::vector<std::string> params);
 			void	pass(User * user, std::vector<std::string> params);
 			void	nick(User * user, std::vector<std::string> params);
+			void	user(User * user, std::vector<std::string> params);
 
 
 

@@ -92,6 +92,7 @@ namespace ft
 			void		setNickname(std::string nick);
 			void		setFirstName(std::string fname);
 			void		setStatus(User::Status status);
+			void		setUsername(std::string	username);
 			std::string nickname(void) const;
 			std::string username(void) const;
 			std::string	hostname(void) const;

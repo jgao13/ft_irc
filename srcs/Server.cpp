@@ -16,7 +16,7 @@ namespace ft
 		_commands["PASS"] = &Server::pass;
 		_commands["JOIN"] = &Server::join;
 		_commands["NICK"] = &Server::nick;
-
+		_commands["USER"] = &Server::user;
 		// socket_fd = _network.init_server_socket(_port);
 	}
 

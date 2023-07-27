@@ -53,6 +53,8 @@ namespace ft
 	void		User::setNickname(std::string nick) 	{_nickname = nick;}
 	void		User::setFirstName(std::string fname) 	{_first_name = fname;}
 	void		User::setStatus(User::Status status)	{_status = status;}
+	void		User::setUsername(std::string username)	{_username = username;}
+
 	std::string User::nickname() const 					{return _nickname;}
 	std::string	User::username() const					{return _username;}
 	std::string	User::hostname() const					{return _hostname;}

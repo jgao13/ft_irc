@@ -22,7 +22,8 @@ S_FILES		=	main.cpp	\
 				cap.cpp	\
 				join.cpp	\
 				pass.cpp	\
-				Nick.cpp
+				Nick.cpp	\
+				user_cmd.cpp
 
 SRCS	=	$(addprefix $(S_DIR), $(S_FILES))
 
