@@ -101,6 +101,15 @@ namespace ft
 			void			sendMsg(std::string content);
 			//bool			isRegistered() const;
 
+			/* GETTERS AND SETTERS */
+			int			getUserFd();
+			std::string	getUsername();
+			std::string	getNickname();
+			std::string	getFirstName();
+			std::string	getLastName();
+			std::string	printStatus();
+			
+
 
 
 		private:

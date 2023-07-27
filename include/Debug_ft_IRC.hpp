@@ -7,7 +7,7 @@
 
 // SILVER == retour de la fonction
 // GREEN == tout ce qui est lancé par la classe Server
-// RED == Tout ce qui est lancé par User
+// ORANGE == Tout ce qui est lancé par User
 // BLUE == Tout ce qui est lancé par Channel
 // VIOLET == Command Class et toutes les commandes
 

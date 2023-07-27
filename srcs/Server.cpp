@@ -13,10 +13,10 @@ namespace ft
 		_network = new Network(_port);
 		_server_fd = _network->getServerFd();
 		_commands["CAP"] = &Server::cap;
-		_commands["PASS"] = &Server::pass;
+		// _commands["PASS"] = &Server::pass;
 		_commands["JOIN"] = &Server::join;
-		_commands["NICK"] = &Server::nick;
-		_commands["USER"] = &Server::user;
+		// _commands["NICK"] = &Server::nick;
+		// _commands["USER"] = &Server::user;
 		// socket_fd = _network.init_server_socket(_port);
 	}
 
@@ -353,7 +353,7 @@ namespace ft
 			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_UNKNOWNCOMMAND, user, cmd.command())));
 			return;
 		}
-		(this->*(it->second))(user, cmd.arguments());
+		(this->*(it->second))(user, &cmd);
 	}
 
 

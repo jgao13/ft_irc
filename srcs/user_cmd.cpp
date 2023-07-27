@@ -1,27 +1,29 @@
 #include "../include/Server.hpp"
+#include "../include/Debug_ft_IRC.hpp"
+
 
 namespace ft {
 
-	void	Server::user(User * user, std::vector<std::string> params)
+	void	Server::user(User * user, Command * cmd)
 	{
 		if (DEBUG)
 		{
 			std::cout << PURPLE << "*** COMMAND USER ***\nParams received: " << RESET;
-			for (std::vector<std::string>::iterator it = params.begin(); it != params.end(); it++)
+			for (std::vector<std::string>::iterator it = cmd->arguments().begin(); it != cmd->arguments().end(); it++)
 			{
-				if (it != params.begin())
+				if (it != cmd->arguments().begin())
 					std::cout << ", ";
 				std::cout << *it;
 			}
 		}
-		if (params[0].empty())
+		if (cmd->arguments()[0].empty())
 				user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NEEDMOREPARAMS, user)));
 		else
 		{
-			user->setUsername(params[0]);
-			user->setFirstName(params[1]);
+			user->setUsername(cmd->arguments()[0]);
+			user->setFirstName(cmd->arguments()[1]);
 		}
-		// if (DEBUG)
-			// print_User(user);
+		if (DEBUG)
+			print_User(user);
 	}
 }

@@ -2,16 +2,16 @@
 
 namespace ft
 {
-	void	Server::pass(User * user, std::vector<std::string> params)
+	void	Server::pass(User * user, Command * cmd)
 	{
-		if ((params.size() == 1 && params[0] == password()) || password().empty())
+		if ((cmd->arguments().size() == 1 && cmd->arguments()[0] == password()) || password().empty())
 		{
 			// Euh, la jai buggé sur la syntaxe
 			
 			user->setStatus(User::REGISTER);
 			return;
 		}
-		if (params.empty())
+		if (cmd->arguments().empty())
 		{
 			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NEEDMOREPARAMS, user, "PASS")));
 			return;

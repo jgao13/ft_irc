@@ -21,7 +21,7 @@
 #include "User.hpp"
 #include "Network.hpp"
 #include "Message_Format.hpp"
-#include "Debug_ft_IRC.hpp"
+#include "../include/Debug_ft_IRC.hpp"
 
 //Ca ptetre a virer
 #include "cmd_err_replies.hpp"
@@ -63,7 +63,7 @@ namespace ft
 	class Server
 	{
 		// Each COMMAND have the same 2 arguments: the User doing the command and a string table
-		typedef	std::map<std::string, void	(Server::*) (User *, std::vector<std::string>)>	Command_List;
+		typedef	std::map<std::string, void	(Server::*) (User *, Command *)>	Command_List;
 		typedef std::map<int, User *>				UserSocketList;
 		typedef	std::map<std::string, User *>		UserList;
 		typedef std::map<std::string, Channel *>	ChannelList;
@@ -140,11 +140,11 @@ namespace ft
 			std::string			_creationTime;
 
 			/* COMMANDS*/
-			void	cap(User * user, std::vector<std::string> params);
-			void	join(User * user, std::vector<std::string> params);
-			void	pass(User * user, std::vector<std::string> params);
-			void	nick(User * user, std::vector<std::string> params);
-			void	user(User * user, std::vector<std::string> params);
+			void	cap(User * user, Command *  cmd);
+			void	join(User * user, Command *  cmd);
+			void	pass(User * user, Command *  cmd);
+			void	nick(User * user, Command *  cmd);
+			void	user(User * user, Command *  cmd);
 
 
 

@@ -54,6 +54,27 @@ namespace ft
 	void		User::setFirstName(std::string fname) 	{_first_name = fname;}
 	void		User::setStatus(User::Status status)	{_status = status;}
 	void		User::setUsername(std::string username)	{_username = username;}
+	int			User::getUserFd()						{return _userfd;}
+	std::string	User::getUsername()						{return _username;}
+	std::string	User::getNickname()						{return _nickname;}
+	std::string	User::getFirstName()					{return _first_name;}
+	std::string	User::getLastName()						{return _last_name;}
+	std::string	User::printStatus()						
+	{switch (_status)
+		{
+		case 0:
+			return "PASSWORD";
+
+		case 1:
+			return "REGISTER";
+
+		case 1 << 1:
+			return "ONLINE";
+		
+		default:
+			return "ERROR";
+		}
+	}
 
 	std::string User::nickname() const 					{return _nickname;}
 	std::string	User::username() const					{return _username;}

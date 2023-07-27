@@ -291,3 +291,32 @@ USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
 CAP LS 302<CR><LF>JOIN :<CR><LF>
 NICK acquila<CR><LF>
 USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+NICK acquila<CR><LF>
+USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
+
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+NICK acquila<CR><LF>
+USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
+
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+NICK acquila<CR><LF>
+USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
+
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+NICK acquila<CR><LF>
+USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
+
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+NICK acquila<CR><LF>
+USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+NICK acquila<CR><LF>
+USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+CAP LS 302<CR><LF>JOIN :<CR><LF>
+NICK acquila<CR><LF>
+USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
