@@ -17,6 +17,8 @@ namespace ft
 		_commands["JOIN"] = &Server::join;
 		_commands["NICK"] = &Server::nick;
 
+
+		print_server();
 		// socket_fd = _network.init_server_socket(_port);
 	}
 
@@ -433,6 +435,58 @@ std::string		ft::Server::strToUpper(std::string str_target)
 		*current = toupper(*it);
 	return s;
 }
+
+
+/////////////////////ajout du print
+//mes ajout --> pas encore tester
+	void	ft::Server::print_epoll_setup(void)
+	{
+		std::cout << "\nepoll fd: " << this->_epoll_fd << std::endl;
+		std::cout << "epoll running " << this->_running << std::endl;
+		std::cout << "epoll_event: " << " pas fait" << std::endl;
+		std::cout << "epoll listen_list: ";
+		for (int i = 0; i < this->listen_list.size(); i++)
+		{
+			if (i !=  0)
+				std::cout << ", ";
+			std::cout << this->listen_list[i];
+		}
+		std::cout << std::endl;
+	}
+
+	void	ft::Server::print_part4(void)
+	{
+		std::map<int, User*>::iterator begin = this->_userList.begin();
+		std::map<int, User*>::iterator end = this->_userList.end();
+
+		std::cout << "\n _userlist: ";
+		while (begin != end)
+		{
+			std::cout << begin->first << " => " << begin->second << std::endl;
+			begin++;
+		}
+		std::cout << "end of _userlist\n";
+		std::cout << "_server_password: " << this->_server_password << std::endl;
+		std::cout << "_serverName: " << this->_serverName << std::endl;
+		std::cout << "Channel list et Command_list a faire\n";
+		std::cout << "_list_connected_users: ";
+		for (int i = 0; i < this->_list_connected_users.size(); i++)
+		{
+			if (i != 0)
+				std::cout << ", ";
+			std::cout << this->_list_connected_users[i];
+		}
+		std::cout << std::endl;
+	}
+	void	ft::Server::print_server(void)
+	{
+		std::cout << PURPLE << "SERVER:\n----------\n";
+		print_epoll_setup();
+		print_part4();
+		std::cout << "\n-----END OF SERVER CHECK-------\n";
+	}
+
+//////////////fin de l'ajout du print 
 
 
 

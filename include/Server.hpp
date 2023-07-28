@@ -19,7 +19,7 @@
 #include "../include/Utils.hpp"
 #include "../include/Command.hpp"
 #include "User.hpp"
-#include "Nick.hpp"
+//#include "Nick.hpp"
 #include "Network.hpp"
 #include "Message_Format.hpp"
 #include "Debug_ft_IRC.hpp"
@@ -73,6 +73,9 @@ namespace ft
 		public:
 			Server(char * port, std::string password);
 			~Server();
+			void	print_epoll_setup(void);
+			void	print_part4(void);
+			void	print_server(void);
 
 		/*		PARTIE 1: SOCKET CREATION, CONFIGURATION AND HANDLING		*/
 		private:
@@ -150,7 +153,6 @@ namespace ft
 
 
 			/* DEBUG */
-			
 			// void	clearFd() {close(socket_fd); close(epoll_fd);}
 	};
 

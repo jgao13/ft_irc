@@ -91,7 +91,7 @@ namespace	ft
 
 	Command::~Command() {}
 
-	void	Command::print_command(void)
+	void	Command::print_command(void) 
 	{
 		std::cout << PURPLE << "COMMAND:\n--------\n"
 		<< "_command : " << SILVER << this->command() << PURPLE

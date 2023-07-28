@@ -4,6 +4,7 @@
 # include <string>
 # include "Colors.hpp"
 # include "Command.hpp"
+# include "Server.hpp"
 
 // SILVER == retour de la fonction
 // GREEN == tout ce qui est lancé par la classe Server
@@ -19,6 +20,7 @@ namespace ft
 
 	// void	print_command(Command * cmd);
 	void	print_User(User * user);
+	//void	print_server(Server * srv);
 	// void	print_UserList(Users);
 }
 
