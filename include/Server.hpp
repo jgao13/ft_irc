@@ -65,7 +65,7 @@ namespace ft
 	{
 		// Each COMMAND have the same 2 arguments: the User doing the command and a string table
 		typedef	std::map<std::string, void	(Server::*) (User *, Command *)>	Command_List;
-		typedef std::map<int, User *>				UserSocketList;
+		// typedef std::map<int, User *>				UserSocketList;
 		typedef	std::map<std::string, User *>		UserList;
 		typedef std::map<std::string, Channel *>	ChannelList;
 
