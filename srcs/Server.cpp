@@ -13,12 +13,15 @@ namespace ft
 		_network = new Network(_port);
 		_server_fd = _network->getServerFd();
 		_commands["CAP"] = &Server::cap;
-		_commands["PASS"] = &Server::pass;
+		// _commands["PASS"] = &Server::pass;
 		_commands["JOIN"] = &Server::join;
 		_commands["NICK"] = &Server::nick;
 
 
+
 		print_server();
+		// _commands["NICK"] = &Server::nick;
+		// _commands["USER"] = &Server::user;
 		// socket_fd = _network.init_server_socket(_port);
 	}
 
@@ -355,7 +358,7 @@ namespace ft
 			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_UNKNOWNCOMMAND, user, cmd.command())));
 			return;
 		}
-		(this->*(it->second))(user, cmd.arguments());
+		(this->*(it->second))(user, &cmd);
 	}
 
 
@@ -487,8 +490,6 @@ std::string		ft::Server::strToUpper(std::string str_target)
 	}
 
 //////////////fin de l'ajout du print 
-
-
 
 
 	// Create the socket, with the relevant options/flags, set it to non blocking

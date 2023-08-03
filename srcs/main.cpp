@@ -24,7 +24,6 @@ int	main(int ac, char **av)
 	try 
 	{
 		ft::Server	server(av[1], av[2]);
-		// ft::Server	server("8080", "pipicaca");
 		std::cout << "SERVER UP\n";
 		signal(SIGINT, handler);
 		server.init_epoll();

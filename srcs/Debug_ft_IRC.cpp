@@ -16,4 +16,16 @@ namespace ft
 			std::cout << "\n";
 		std::cout << PURPLE << "_message : " << SILVER << cmd->message();
 	}
+
+	void	print_User(User * user)
+	{
+		std::cout << ORANGE << "\nprint_User called:-----------\n"
+		<< "_userfd: " << RESET << user->getUserFd() << ORANGE
+		<< "\n_username: " << RESET << user->getUsername() << ORANGE
+		<< "\n_nickname: " << RESET << user->getNickname() << ORANGE
+		<< "\n_firstname: " << RESET << user->getFirstName() << ORANGE
+		<< "\n_lastname: " << RESET << user->getLastName() << ORANGE
+		<< "\n_status: " << RESET << user->printStatus()
+		<< "\n-------------------------------------------------\n";
+	}
 }

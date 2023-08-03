@@ -1,6 +1,12 @@
+	- Une fonction propre print_User(User *) a faire dans Debug_ft_IRC.cpp serait grave cool
 	- PASS
 	- USER
-	- NICKNAME
+	- NICK:  bon la il marche mais faut le finir, avec la gestion d'erreur (431,432,433,436) et check pour les nickname deja pris
+		- Il faut refuser les caracteres chelou
+		- et on va faire ca propre et envoyer un message aux autres clients que qqun a changé son NICK
+		- apparemment, la doc a l'air d'insinuer qu'on peut 'ignorer' le Nick command, c'est bizarre, je sais pas trop quel comportement
+			on doit faire du coup si un User a pas de nick.
+		- https://modern.ircdocs.horse/#nick-message
 	- Server::DisconnectUser a faire
 	- Channel a faire: 
 		- list user, 

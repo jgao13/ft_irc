@@ -92,6 +92,7 @@ namespace ft
 			void		setNickname(std::string nick);
 			void		setFirstName(std::string fname);
 			void		setStatus(User::Status status);
+			void		setUsername(std::string	username);
 			std::string nickname(void) const;
 			std::string username(void) const;
 			std::string	hostname(void) const;
@@ -99,6 +100,15 @@ namespace ft
 			std::string						_buffer;
 			void			sendMsg(std::string content);
 			//bool			isRegistered() const;
+
+			/* GETTERS AND SETTERS */
+			int			getUserFd();
+			std::string	getUsername();
+			std::string	getNickname();
+			std::string	getFirstName();
+			std::string	getLastName();
+			std::string	printStatus();
+			
 
 
 

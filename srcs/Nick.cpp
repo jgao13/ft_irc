@@ -2,9 +2,9 @@
 
 namespace ft
 {
-	void	Server::nick(User * user, std::vector<std::string> params)
+	void	Server::nick(User * user, Command * cmd)
 	{
-		user->setNickname(params[0]);
-		std::cout << "command nick starting\n" << params[0] << "  " << std::endl;
+		user->setNickname(cmd->arguments()[0]);
+		std::cout << "command nick starting\n" << cmd->arguments()[0] << "  " << std::endl;
 	}
 }
