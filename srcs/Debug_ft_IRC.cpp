@@ -31,51 +31,51 @@ namespace ft
 
 	/////////////////////ajout du print
 //mes ajout --> pas encore tester
-	void	print_epoll_setup(Server * server)
-	{
-		std::cout << "\nepoll fd: " << server->_epoll_fd << std::endl;
-		std::cout << "epoll running " << server->_running << std::endl;
-		std::cout << "epoll_event: " << " pas fait" << std::endl;
-		std::cout << "epoll listen_list: ";
-		for (int i = 0; i < server->listen_list.size(); i++)
-		{
-			if (i !=  0)
-				std::cout << ", ";
-			std::cout << server->listen_list[i];
-		}
-		std::cout << std::endl;
-	}
+	// void	print_epoll_setup(Server * server)
+	// {
+	// 	std::cout << "\nepoll fd: " << server->_epoll_fd << std::endl;
+	// 	std::cout << "epoll running " << server->_running << std::endl;
+	// 	std::cout << "epoll_event: " << " pas fait" << std::endl;
+	// 	std::cout << "epoll listen_list: ";
+	// 	for (int i = 0; i < server->listen_list.size(); i++)
+	// 	{
+	// 		if (i !=  0)
+	// 			std::cout << ", ";
+	// 		std::cout << server->listen_list[i];
+	// 	}
+	// 	std::cout << std::endl;
+	// }
 
-	void	print_server_part(Server * server)
-	{
-		std::map<int, User*>::iterator begin = server->_userList.begin();
-		std::map<int, User*>::iterator end = server->_userList.end();
+	// void	print_server_part(Server * server)
+	// {
+	// 	std::map<int, User*>::iterator begin = server->_userList.begin();
+	// 	std::map<int, User*>::iterator end = server->_userList.end();
 
-		std::cout << "\n _userlist: ";
-		while (begin != end)
-		{
-			std::cout << begin->first << " => " << begin->second << std::endl;
-			begin++;
-		}
-		std::cout << "end of _userlist\n";
-		std::cout << "_server_password: " << server->_server_password << std::endl;
-		std::cout << "_serverName: " << server->_serverName << std::endl;
-		std::cout << "Channel list et Command_list a faire\n";
-		std::cout << "_list_connected_users: ";
-		for (int i = 0; i < server->_list_connected_users.size(); i++)
-		{
-			if (i != 0)
-				std::cout << ", ";
-			std::cout << server->_list_connected_users[i];
-		}
-		std::cout << std::endl;
-	}
-	void	print_server(Server * server)
-	{
-		std::cout << PURPLE << "SERVER:\n----------\n";
-		print_epoll_setup(server);
-		print_server_part(server);
-		std::cout << "\n-----END OF SERVER CHECK-------\n";
-	}
+	// 	std::cout << "\n _userlist: ";
+	// 	while (begin != end)
+	// 	{
+	// 		std::cout << begin->first << " => " << begin->second << std::endl;
+	// 		begin++;
+	// 	}
+	// 	std::cout << "end of _userlist\n";
+	// 	std::cout << "_server_password: " << server->_server_password << std::endl;
+	// 	std::cout << "_serverName: " << server->_serverName << std::endl;
+	// 	std::cout << "Channel list et Command_list a faire\n";
+	// 	std::cout << "_list_connected_users: ";
+	// 	for (int i = 0; i < server->_list_connected_users.size(); i++)
+	// 	{
+	// 		if (i != 0)
+	// 			std::cout << ", ";
+	// 		std::cout << server->_list_connected_users[i];
+	// 	}
+	// 	std::cout << std::endl;
+	// }
+	// void	print_server(Server * server)
+	// {
+	// 	std::cout << PURPLE << "SERVER:\n----------\n";
+	// 	print_epoll_setup(server);
+	// 	print_server_part(server);
+	// 	std::cout << "\n-----END OF SERVER CHECK-------\n";
+	// }
 
 }

@@ -27,7 +27,7 @@ namespace	ft
 		_command = strToUpper(_command);
 		if (DEBUG)
 		{
-			print_command();
+			// print_command(&this);
 		}
 	}
 
@@ -40,46 +40,3 @@ namespace	ft
 	Command::Command(){/*This shouldn't be used*/}
 	Command::~Command() {}
 }
-
-
-	// void	Command::print_command(void) 
-	// {
-	// 	std::cout << PURPLE << "COMMAND:\n--------\n"
-	// 	<< "_command : " << SILVER << this->command() << PURPLE
-	// 	<< "\narguments : " << SILVER;
-	// 	for (int i = 0; i < arguments().size(); i++)
-	// 		{
-	// 			if (i != 0)
-	// 				std::cout << ", ";
-	// 			std:: cout << (arguments())[i];
-	// 		}
-	// 		std::cout << "\n";
-	// 	std::cout << PURPLE << "_message : " << SILVER << message() << RESET << "\n";
-	// }
-
-	// std::string	Command::command() const 
-	// {
-	// 	if (_message.empty() || _command.empty())
-	// 		return (std::string (""));
-	// 	return _command;
-	// }
-
-	// int		Command::parse_message(std::string message)
-	// {
-	// 	std::string delimiter(":");
-	// 	size_t position;
-	// 	if ((position = message.find(delimiter)) != std::string::npos)
-	// 	{
-	// 		std::string tmp = message.substr(0, position);
-	// 		message.erase(0, position + delimiter.length());
-	// 		_message = message;
-	// 		message = tmp;
-	// 	}
-
-	// 	_arguments = split(message, " ");
-	// 	_prefix = *(parameters.begin());
-	// 	_arguments.erase(parameters.begin());
-
-	// for (size_t index = 0; index < prefix.length(); ++index)
-	// 	prefix[index] = std::toupper(prefix[index]);
-	// }

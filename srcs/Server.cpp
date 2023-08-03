@@ -235,60 +235,39 @@ namespace ft
 			processMsgEvent(buffer, events[index].data.fd);
 			std::string delimiter("\r\n");
 			size_t position;
-			while ((position = buffer.find(delimiter)) != std::string::npos)
-			{
-				std::string message = buffer.substr(0, position);
-				buffer.erase(0, position + delimiter.length());
-				if (!message.length())
-					continue;
+			// TOUTE CETTE BOUCLE SERT PLUS A RIEN
+		// 	while ((position = buffer.find(delimiter)) != std::string::npos)
+		// 	{
+		// 		std::string message = buffer.substr(0, position);
+		// 		buffer.erase(0, position + delimiter.length());
+		// 		if (!message.length())
+		// 			continue;
 
-				// commands.push_back(new Command(this, server, message));
-				else 
-				{
-					std::cout << SILVER << "MESSAGE RECU PAR LE SERVER: \n-----------\n" << RESET;
-					print_f_all(message);
-					std::cout << SILVER << "\n-------------\n" << RESET;
+		// 		// commands.push_back(new Command(this, server, message));
+		// 		else 
+		// 		{
+		// 			std::cout << SILVER << "MESSAGE RECU PAR LE SERVER: \n-----------\n" << RESET;
+		// 			print_f_all(message);
+		// 			std::cout << SILVER << "\n-------------\n" << RESET;
 					
-					std::string		command;
-					command = message.substr(0, message.find_first_of("\r\n"));
-					// command_JOIN(command, _userList[events[index].data.fd]);
-					std::cout << "MESSAGE AVANT ERASE:" << message << std::endl;
-					message = message.erase(0, message.find_first_of("\r\n"));
-					std::cout << "MESSAGE apres ERASE:" << message << std::endl;
-					command = message.substr(0, message.find_first_of("\r\n"));
-					// command_JOIN(command, _userList[events[index].data.fd]);
-				}
-			}
+		// 			std::string		command;
+		// 			command = message.substr(0, message.find_first_of("\r\n"));
+		// 			// command_JOIN(command, _userList[events[index].data.fd]);
+		// 			std::cout << "MESSAGE AVANT ERASE:" << message << std::endl;
+		// 			message = message.erase(0, message.find_first_of("\r\n"));
+		// 			std::cout << "MESSAGE apres ERASE:" << message << std::endl;
+		// 			command = message.substr(0, message.find_first_of("\r\n"));
+		// 			// command_JOIN(command, _userList[events[index].data.fd]);
+		// 		}
+		// 	}
 		}
 	}
 
-	int	Server::getServSockFd() 
+	int				Server::getServSockFd() 
 	{
 		std::cout << "SERVER_SOCKET_FD == " << _network->getServerFd() << "\n";
 		return (_network->getServerFd());
 	}
-
-	// void	Server::command_JOIN(std::string params, User *someone)
-	// {
-	// 	std::cout << "PARAMS RECUS PAR JOIN: " << params << std::endl;
-	// 	if (params.find("CAP") != std::string::npos)
-	// 	{
-
-	// 		std::string reply = "CAP * LS :\r\n";
-	// 		sendMsg(someone->getUserfd(), reply.c_str(), reply.size(), 0);
-	// 		// reply = "WELCOME TO MY SERVER BIATCH: \r\n";
-	// 		// send(someone->getUserfd(), reply.c_str(), reply.size(), 0);
-	// 		// std::cout << reply;
-	// 		return;
-	// 	}
-	// 	else if (params.find("JOIN") != std::string::npos)
-	// 	{
-	// 		std::string reply = "JOIN:";
-	// 		send(someone->getUserfd(), reply.c_str(), reply.size(), 0);
-
-	// 	}
-	// 	return;
-	// }
 
 	void			Server::initCreationTime()
 	{
@@ -305,7 +284,6 @@ namespace ft
 	// 2. Identifying the User at the origin of the message
 	// 2bis. Completing the buffered message that was in the client structure
 	// 3. Executing the actions/commands
-	//
 	void			Server::processMsgEvent(std::string buffer, int user_fd)
 	{
 		std::string delimiter("\r\n");
@@ -346,7 +324,7 @@ namespace ft
 			std::cout << GREEN << "\n*** | SERVER | ***\n" << RESET;
 			std::cout << GREEN << "Server::execCommand\n"
 			<< "msg received: " << SILVER << message << RESET << "\n";
-			cmd.print_command();
+			// cmd.print_command();
 		}
 		Command_List::iterator it = _commands.find(cmd.command());
 		if (it == _commands.end()) 
@@ -358,8 +336,6 @@ namespace ft
 		}
 		(this->*(it->second))(user, &cmd);
 	}
-
-
 
 	void			Server::disconnectUser(int userFd, std::string reason, bool isInvis)
 	{
@@ -377,7 +353,6 @@ namespace ft
 		// Virer de la liste de user du Channel
 		//if (!isInvis)
 			//disconnection_Notification(userFd, reason);
-
 	}
 
 

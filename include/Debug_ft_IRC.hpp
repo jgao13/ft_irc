@@ -18,7 +18,7 @@ namespace ft
 	class User;
 	class Server;
 
-	// void	print_command(Command * cmd);
+	void	print_command(Command * cmd);
 	void	print_User(User * user);
 	//void	print_server(Server * srv);
 	// void	print_UserList(Users);
