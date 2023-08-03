@@ -19,10 +19,7 @@
 #include "../include/Utils.hpp"
 #include "../include/Command.hpp"
 #include "User.hpp"
-<<<<<<< HEAD
 //#include "Nick.hpp"
-=======
->>>>>>> ELGUAPOTEO
 #include "Network.hpp"
 #include "Message_Format.hpp"
 #include "../include/Debug_ft_IRC.hpp"
