@@ -1,8 +1,12 @@
-	- 
+	OBJECTIF
+	https://modern.ircdocs.horse/#connection-registration
 	
 	- Une fonction propre print_User(User *) a faire dans Debug_ft_IRC.cpp serait grave cool
 	- PASS
-	- USER
+	- USER: 
+			- défini le Username et le Realname of the user
+			- SI le Username est deja pris, doit rajouter un '~' avant le Username du gars
+			- 
 	- NICK:  bon la il marche mais faut le finir, avec la gestion d'erreur (431,432,433,436) et check pour les nickname deja pris
 		- Il faut refuser les caracteres chelou
 		- et on va faire ca propre et envoyer un message aux autres clients que qqun a changé son NICK
