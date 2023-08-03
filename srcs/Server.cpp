@@ -17,8 +17,6 @@ namespace ft
 		_commands["JOIN"] = &Server::join;
 		_commands["NICK"] = &Server::nick;
 
-
-
 		print_server();
 		// _commands["NICK"] = &Server::nick;
 		// _commands["USER"] = &Server::user;
