@@ -15,6 +15,7 @@
 #include <netdb.h>					// getaddrinfo
 #include <stdlib.h>
 #include <map>
+#include <cstring>					//strchr
 #include "../include/Colors.hpp"
 #include "../include/Utils.hpp"
 #include "../include/Command.hpp"
