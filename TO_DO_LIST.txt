@@ -2,7 +2,12 @@
 	https://modern.ircdocs.horse/#connection-registration
 	
 	- Une fonction propre print_User(User *) a faire dans Debug_ft_IRC.cpp serait grave cool
-	- PASS
+	- PASS :
+			- PASS <mdp> : mdp = mdp que l'utilisateur souhaite utiliser pour se co
+			- cas d'erreur : 
+						- CODE_ERR_NEEDMOREPARAMS (461), argument vide
+						- CODE_ERR_ALREADYREGISTRED (462), envoyer le mdp apres avoir deja ete register
+						- RPL_WELCOME (001), message de biemvemue quand authentification reussi
 	- USER: 
 			- défini le Username et le Realname of the user
 			- SI le Username est deja pris, doit rajouter un '~' avant le Username du gars

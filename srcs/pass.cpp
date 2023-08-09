@@ -2,27 +2,35 @@
 
 namespace ft
 {
-	void	Server::pass(User * user, Command * cmd)
+	
+//ma tentative de commande pass :
+	void Server::pass(User *user, Command *cmd)
 	{
-		if ((cmd->arguments().size() == 1 && cmd->arguments()[0] == password()) || password().empty())
+		std::string password = cmd->arguments()[0];
+		if (user->printStatus() == "REGISTER")
 		{
-			// Euh, la jai buggé sur la syntaxe
-			
-			user->setStatus(User::REGISTER);
-			return;
+			std::cout << 462 << std::endl; //message d'erreur already register
+			return ;
 		}
-		if (cmd->arguments().empty())
+		if (password.empty())
 		{
-			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NEEDMOREPARAMS, user, "PASS")));
-			return;
+			std::cout << 461 << std::endl; //pas assez de parametre
+			return ;
 		}
-		// else
-		// {
-		// 	user->send(serverMessageBuilder(*this, commandMessageBuilder(CODE_ERR_PASSWDMISMATCH, user)));
-		// 	disconnect(user, "Wrong Password");
-		// 	return;
-		// }
-
+		else
+			{
+				if (password == password())
+				{
+					user->setStatus(User::REGISTER);
+					std::cout << 001 << std::endl; //message de confirmation
+					return ;
+				}
+				else
+				{
+					std::cout << 464 << std::endl; //incorrect password
+					return ;
+				}
+			}
 	}
 
 }
