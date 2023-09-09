@@ -150,7 +150,8 @@ namespace ft
 			void	pass(User * user, Command *  cmd);
 			void	nick(User * user, Command *  cmd);
 			void	user(User * user, Command *  cmd);
-
+			void	kick(User * user, Command * cmd); // pas encore tester / rajouter le channel ?
+			void	invite(User * user, Command *cmd);
 
 
 
