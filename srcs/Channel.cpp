@@ -54,4 +54,13 @@ namespace ft {
             user->sendMsg(message);
         }
     }
+	std::string Channel::getTopic()
+    {
+        return (_topic);
+    }
+	void setTopic(std::string subject)
+    {
+        _topic = subject;
+    }
+
 }

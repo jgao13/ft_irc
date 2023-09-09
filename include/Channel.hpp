@@ -19,10 +19,13 @@ namespace ft {
         void addOperator(User* user);
         void removeOperator(User* user);
         void sendMessageToMembers(const std::string& message);
+		std::string getTopic();
+		void setTopic(std::string subject);
 
     private:
         std::string _name; //nom du chan
         std::map<std::string, User*> _members; //liste des membre
         std::map<std::string, User*> _operators; // liste des operateur
+		std::string _topic; //topic du chan
     };
 }

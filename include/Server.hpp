@@ -152,7 +152,7 @@ namespace ft
 			void	user(User * user, Command *  cmd);
 			void	kick(User * user, Command * cmd); // pas encore tester / rajouter le channel ?
 			void	invite(User * user, Command *cmd);
-
+			void	topic(User *user, Command *cmd);
 
 
 			/* DEBUG */
