@@ -1,4 +1,4 @@
-#include "Channel.hpp"
+#include "../include/Channel.hpp"
 
 namespace ft {
     Channel::Channel(const std::string& name) : _name(name) {}

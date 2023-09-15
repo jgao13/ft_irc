@@ -1,6 +1,4 @@
-#include "Server.hpp"
-
-// ...
+#include "../include/Server.hpp"
 
 void Server::topic(User* sender, Command* cmd) {
     // Vérifie que l'utilisateur est bien enregistré
@@ -37,6 +35,11 @@ void Server::topic(User* sender, Command* cmd) {
                 sender->sendMsg("331 " + channel->getName() + ": No topic is set\r\n");
                 return;
             }
+        else 
+        {
+            std::cout << "332 " << channel->getName() << " :" <<channel->getTopic() << std::endl; //pas sur qu'il faut que sa d'ecrit
+            return ;
+        }
     }
     // Vérifie que l'utilisateur a le droit de changer le sujet (topic) du canal
     if (!channel->isOperator(sender)) {
