@@ -394,14 +394,14 @@ namespace ft
 			return it->second;
 	}
 
-// ft::Channel *	ft::Server::getChannelByName(std::string const channelName) const
-// {
-// 	std::map<std::string, Channel>::const_iterator it = _channelList.find(ft::strToUpper(channelName));
-// 	if (it == _channelList.end())
-// 		return NULL;
-// 	else
-// 		return it->second;
-// }
+ ft::Channel *  	ft::Server::getChannelByName(std::string const channelName) const
+ {
+ 	std::map<std::string, ft::Channel *>::const_iterator it = _channelList.find(channelName);
+ 	if (it == _channelList.end())
+ 		return NULL;
+ 	else
+ 		return it->second;
+ }
 
 std::string		ft::Server::strToUpper(std::string str_target)
 {
@@ -462,6 +462,10 @@ std::string		ft::Server::strToUpper(std::string str_target)
 		std::cout << "\n-----END OF SERVER CHECK-------\n";
 	}
 
+	std::string ft::Server::getPassword(void)
+	{
+		return (_server_password);
+	}
 //////////////fin de l'ajout du print 
 
 

@@ -20,6 +20,7 @@
 #include "../include/Utils.hpp"
 #include "../include/Command.hpp"
 #include "User.hpp"
+#include "Channel.hpp"
 //#include "Nick.hpp"
 #include "Network.hpp"
 #include "Message_Format.hpp"
@@ -121,7 +122,7 @@ namespace ft
 			std::map<int, User *>			_userList;
 			std::string						_server_password;
 			std::string						_serverName;
-			std::map<std::string, Channel>	_channelList;
+			std::map<std::string, Channel *>	_channelList;
 			Command_List					_commands;
 			std::vector<std::string>		_list_connected_users;
 
@@ -146,7 +147,7 @@ namespace ft
 
 			/* COMMANDS*/
 			void	cap(User * user, Command *  cmd);
-			void	join(User * user, Command *  cmd);
+			void	join(User * user, Command *  cmd); 
 			void	pass(User * user, Command *  cmd);
 			void	nick(User * user, Command *  cmd);
 			void	user(User * user, Command *  cmd);

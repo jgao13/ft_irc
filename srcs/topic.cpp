@@ -1,19 +1,21 @@
 #include "../include/Server.hpp"
 
+namespace ft
+{
 void Server::topic(User* sender, Command* cmd) {
     // Vérifie que l'utilisateur est bien enregistré
-    if (sender->getStatus() != User::ONLINE) {
+    if (sender->printStatus() != "REGISTERED") {
         sender->sendMsg("451 ERR_NOTREGISTERED :You have not registered\r\n");
         return;
     }
 
     // Vérifie que les paramètres de la commande sont corrects
-    if (cmd->getParameters().size() < 1) {
+    if (cmd->arguments().size() < 1) {
         sender->sendMsg("461 ERR_NEEDMOREPARAMS :Not enough parameters\r\n");
         return;
     }
 
-    std::string channelName = cmd->getParameters()[0];
+    std::string channelName = cmd->arguments()[0];
 
     // Vérifie que le canal existe
     Channel* channel = getChannelByName(channelName);
@@ -28,9 +30,10 @@ void Server::topic(User* sender, Command* cmd) {
         return;
     }
 
-    if (cmd->getParameters().size() == 1)
+    if (cmd->arguments().size() == 1)
     {
-        if (!channel->getTopic())
+        std::string test = channel->getTopic();
+        if (test.empty())
             {
                 sender->sendMsg("331 " + channel->getName() + ": No topic is set\r\n");
                 return;
@@ -48,7 +51,7 @@ void Server::topic(User* sender, Command* cmd) {
     }
 
     // Obtient le nouveau sujet (topic) à définir
-    std::string newTopic = cmd->getParameters()[1];
+    std::string newTopic = cmd->arguments()[1];
 
     // Définit le nouveau sujet (topic) du canal
     channel->setTopic(newTopic);
@@ -56,4 +59,5 @@ void Server::topic(User* sender, Command* cmd) {
     // Informe les utilisateurs du changement de sujet (topic)
     std::string topicMessage = ":" + sender->getNickname() + " TOPIC " + channelName + " :" + newTopic + "\r\n";
     channel->sendMessageToMembers(topicMessage);
+}
 }

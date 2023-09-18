@@ -3,13 +3,16 @@
 #include <string>
 #include <map>
 #include "User.hpp"
+#include "Server.hpp"
 
 namespace ft {
+    class User;
     class Channel {
     public:
 	//constructeur destructeur
         Channel(const std::string& name);
 		~Channel();
+        
 	//fonction membre (je pense les noms sont assez Obvious) 
         const std::string& getName() const;
         void addUser(User* user);
@@ -23,6 +26,7 @@ namespace ft {
 		void setTopic(std::string subject);
 
         // preparez vous mentalement la ca va etre flou
+        //a faire, getter setter pour tout les boolend, key etc...
 
     private:
         std::string _name; //nom du chan

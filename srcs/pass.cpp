@@ -19,7 +19,7 @@ namespace ft
 		}
 		else
 			{
-				if (password == password())
+				if (password == getPassword())
 				{
 					user->setStatus(User::REGISTER);
 					std::cout << 001 << std::endl; //message de confirmation

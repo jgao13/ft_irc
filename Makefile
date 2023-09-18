@@ -24,7 +24,11 @@ S_FILES		=	main.cpp	\
 				pass.cpp	\
 				Nick.cpp	\
 				user_cmd.cpp \
-				Debug_ft_IRC.cpp
+				Debug_ft_IRC.cpp \
+				Channel.cpp \
+				topic.cpp \
+				invite.cpp \
+				mode.cpp 
 
 SRCS	=	$(addprefix $(S_DIR), $(S_FILES))
 

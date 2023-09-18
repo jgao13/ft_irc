@@ -2,7 +2,9 @@
 
 namespace ft {
     Channel::Channel(const std::string& name) : _name(name)
-    {}
+    {
+        //set tout les bool a true or false ?
+    }
 
     Channel::~Channel()
     {
@@ -59,7 +61,7 @@ namespace ft {
     {
         return (_topic);
     }
-	void setTopic(std::string subject)
+	void Channel::setTopic(std::string subject)
     {
         _topic = subject;
     }

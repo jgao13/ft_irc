@@ -1,21 +1,21 @@
 #include "../include/Server.hpp"
 
-
+namespace ft{
 void Server::invite(User* sender, Command* cmd) {
     // Vérifie que l'utilisateur est bien enregistré
-    if (sender->getStatus() != User::ONLINE) {
+    if (sender->printStatus() != "REGISTERED") {
         sender->sendMsg("451 ERR_NOTREGISTERED :You have not registered\r\n");
         return;
     }
 
     // Vérifie que les paramètres de la commande sont corrects
-    if (cmd->getParameters().size() < 2) {
+    if (cmd->arguments().size() < 2) {
         sender->sendMsg("461 ERR_NEEDMOREPARAMS :Not enough parameters\r\n");
         return;
     }
 
-    std::string targetUserName = cmd->getParameters()[0];
-    std::string channelName = cmd->getParameters()[1];
+    std::string targetUserName = cmd->arguments()[0];
+    std::string channelName = cmd->arguments()[1];
 
     // Vérifie que l'utilisateur cible existe
     User* targetUser = getUserByName(targetUserName);
@@ -46,4 +46,5 @@ void Server::invite(User* sender, Command* cmd) {
     // Envoyer une invitation à l'utilisateur cible
     std::string inviteMessage = ":" + sender->getNickname() + " INVITE " + targetUserName + " " + channelName + "\r\n";
     targetUser->sendMsg(inviteMessage);
+}
 }
