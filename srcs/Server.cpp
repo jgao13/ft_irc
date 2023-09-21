@@ -13,13 +13,14 @@ namespace ft
 		_network = new Network(_port);
 		_server_fd = _network->getServerFd();
 		_commands["CAP"] = &Server::cap;
-		// _commands["PASS"] = &Server::pass;
+		_commands["PASS"] = &Server::pass;
 		_commands["JOIN"] = &Server::join;
+		std::cout << "\n\n\n\n c'est sa qui lance mick ???? \n\n\n\n\n";
 		_commands["NICK"] = &Server::nick;
 
 		print_server();
 		// _commands["NICK"] = &Server::nick;
-		// _commands["USER"] = &Server::user;
+		 _commands["USER"] = &Server::user;
 		// socket_fd = _network.init_server_socket(_port);
 	}
 
@@ -319,7 +320,7 @@ namespace ft
 		Command	cmd(message, this, user);
 		// if (cmd.getCmd() == NULL)
 		// 	return ;
-		if (DEBUG)
+		if (DEBUG) 
 		{
 			std::cout << GREEN << "\n*** | SERVER | ***\n" << RESET;
 			std::cout << GREEN << "Server::execCommand\n"
@@ -442,7 +443,7 @@ std::string		ft::Server::strToUpper(std::string str_target)
 			begin++;
 		}
 		std::cout << "end of _userlist\n";
-		std::cout << "_server_password: " << this->_server_password << std::endl;
+		std::cout << "_server_password: " << this->_password << std::endl;
 		std::cout << "_serverName: " << this->_serverName << std::endl;
 		std::cout << "Channel list et Command_list a faire\n";
 		std::cout << "_list_connected_users: ";
@@ -464,7 +465,7 @@ std::string		ft::Server::strToUpper(std::string str_target)
 
 	std::string ft::Server::getPassword(void)
 	{
-		return (_server_password);
+		return (_password);
 	}
 //////////////fin de l'ajout du print 
 

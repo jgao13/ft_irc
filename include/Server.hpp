@@ -119,8 +119,8 @@ namespace ft
 			void				execute_message(std::string message, User * user);
 			void				disconnectUser(int userFd, std::string reason, bool isInvis);
 
-			std::map<int, User *>			_userList;
-			std::string						_server_password;
+			std::map<int , User *>			_userList;
+			//std::map<int, User *>			_nickList;
 			std::string						_serverName;
 			std::map<std::string, Channel *>	_channelList;
 			Command_List					_commands;

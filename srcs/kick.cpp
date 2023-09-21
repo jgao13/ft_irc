@@ -5,7 +5,7 @@ namespace ft
 	void	Server::kick(User *sender, Command * cmd)
 	{
     // Vérifie que l'utilisateur est bien enregistré
-        if (sender->getStatus() != "REGISTERED") {
+        if (sender->getStatus() != "REGISTER") {
             sender->sendMsg("451 ERR_NOTREGISTERED :You have not registered\r\n");
             return;
         }

@@ -87,8 +87,8 @@ namespace ft
 			};
 			User(int fd, sockaddr address);
 			~User();
-			// void		setPassword(std::string pass) {_password = pass;}
-			// std::string	getPassword(void) {return _password;}
+			//void		setPassword(std::string pass) {_password = pass;}
+			//std::string	getPassword(void) {return _password;}
 			void		setNickname(std::string nick);
 			void		setFirstName(std::string fname);
 			void		setStatus(User::Status status);

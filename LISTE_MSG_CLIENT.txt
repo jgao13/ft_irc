@@ -1,361 +1,107 @@
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-
-
-
-
-
-
-
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-
-
-
-
-
-
-
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-
-
-
-
-
-
-
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-
-
-
-
-
-
-
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-
-
-
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :Acquila<CR><LF>
-
-CAP LS<CR><LF>NICK user42<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-
-CAP LS<CR><LF>NICK user42<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK nicenickname<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK nicenickname<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK nicenickname<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK test<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK nicenickname<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS<CR><LF>NICK nicenickname<CR><LF>USER user42 user42 127.0.0.1 :user42<CR><LF>
-CAP LS 302<CR><LF>
-JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-CAP LS 302<CR><LF>JOIN :<CR><LF>
-NICK acquila<CR><LF>
-USER acquila acquila 127.0.0.1 :John Cena<CR><LF>
-CAP LS<CR><LF>NICK shamizi<CR><LF>
-USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-
-CAP LS<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK test<CR><LF>
+NICK test<CR><LF>
+NICK test<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK test<CR><LF>
+NICK test<CR><LF>
+NICK test<CR><LF>
+NICK tes~;<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>
 NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>
-USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+NICK tes<CR><LF>
+PING 127.0.0.1<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>
-USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK tes<CR><LF>
+NICK tes<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>
-NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>
-NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK tessi<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK test<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK test<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>
-USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>
-PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK test<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
-CAP LS<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK tesi<CR><LF>
+NICK testt<CR><LF>
+NICK test<CR><LF>
+NICK teseee<CR><LF>
+NICK teseee<CR><LF>
+NICK teseee<CR><LF>
+NICK teseee<CR><LF>
+NICK teseee<CR><LF>
+NICK teseee<CR><LF>
+NICK teseee<CR><LF>
+NICK teseee<CR><LF>
+NICK teseee<CR><LF>
+NICK teseer<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+NICK teseeract<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>

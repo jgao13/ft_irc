@@ -6,7 +6,8 @@ namespace ft
 	//If join with nothing, silently ignore it pls
 	void	Server::join(User *user, Command * cmd)
 	{
-
+		user->sendMsg("test de join\n\n");
+		std::cout << "in join fct\n\n";
 		// if (!isAlreadyConnected(user))
 		// {
 			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NEEDMOREPARAMS, user)));

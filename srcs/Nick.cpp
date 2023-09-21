@@ -29,20 +29,50 @@ namespace ft
 
 	void	Server::nick(User * user, Command * cmd)
 	{
+		//std::cout << "on est rentrer dans la commande nick \n\n\n\n\n\n\n\n";
+		if (user->printStatus() == "PASSWORD")
+		{
+			
+			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NEEDMOREPARAMS, user)));
+			// user->_buffer.clear();
+			return;
+		}
 		std::string nick = cmd->arguments()[0];
 		if (nick.empty())
-			std::cout << 431 << std::endl;
+		{
+			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(431, user)));
+			return ;
+		}
+			//std::cout << 431 << std::endl;
 		else if (nick.size() > 9 || !invalideChar(nick))
-			std::cout << 432 << std::endl;
+		{
+			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(432, user)));
+			return ;
+		}
+	//		std::cout << 432 << std::endl;
 		//else if(verifier la liste de tous les pseudo mais je sais pas ou ils sont stocker dans le channel)
 			//{occurence trouver return erreur 433}
 		else
 		{
-			//print old NICK new (source chat gpt tu connais)
-			std::cout << user->getNickname() << " NICK " << nick << std::endl; 
-			user->setNickname(nick);
+			std::map<int, User *>::iterator it;
+		for (it = _userList.begin(); it != _userList.end(); it++)
+		{
+			std::cout << "USERLIST :" << it->second->getNickname() << "\n";
+			if (nick == it->second->getNickname())
+			{
+				user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(432, user)));
+				std::cout << "c le meme pseudo\n\n";
+				return ;
+			}
 
 		}
+		}
+
+			//print old NICK new (source chat gpt tu connais)
+			user->sendMsg("TA BIEN CHANGER DE PSEUDO FDP\r\n");
+			//std::cout << user->getNickname() << " NICK " << nick << std::endl; 
+			user->setNickname(nick);
+
 		if (DEBUG)
 		{
 			// print_command(cmd);
