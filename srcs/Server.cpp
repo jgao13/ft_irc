@@ -15,12 +15,12 @@ namespace ft
 		_commands["CAP"] = &Server::cap;
 		_commands["PASS"] = &Server::pass;
 		_commands["JOIN"] = &Server::join;
-		std::cout << "\n\n\n\n c'est sa qui lance mick ???? \n\n\n\n\n";
 		_commands["NICK"] = &Server::nick;
 
 		print_server();
-		// _commands["NICK"] = &Server::nick;
-		 _commands["USER"] = &Server::user;
+
+		_commands["USER"] = &Server::user;
+		_commands["WHOIS"] = &Server::whois;
 		// socket_fd = _network.init_server_socket(_port);
 	}
 

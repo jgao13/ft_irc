@@ -28,7 +28,8 @@ S_FILES		=	main.cpp	\
 				Channel.cpp \
 				topic.cpp \
 				invite.cpp \
-				mode.cpp 
+				mode.cpp \
+				whois.cpp
 
 SRCS	=	$(addprefix $(S_DIR), $(S_FILES))
 

@@ -6,20 +6,20 @@ namespace ft {
 
 	void	Server::user(User * user, Command * cmd)
 	{
-		std::cout << "entrer dans server::user \n\n";
-		if (DEBUG)
-		{
-			std::cout << PURPLE << "*** COMMAND USER ***\nParams received: " << RESET;
-			for (std::vector<std::string>::iterator it = cmd->arguments().begin(); it != cmd->arguments().end(); it++)
-			{
+		// if (DEBUG)
+		// {
+		// 	std::cout << PURPLE << "*** COMMAND USER ***\nParams received: " << RESET;
+		// 	for (std::vector<std::string>::iterator it = cmd->arguments().begin(); it != cmd->arguments().end(); it++)
+		// 	{
 				
-				if (it != cmd->arguments().begin())
-					std::cout << ", ";
+		// 		if (it != cmd->arguments().begin())
+		// 			std::cout << ", ";
 
-				//std::cout << *it; //cette ligne segault je crois
+		// 		std::cout << *it; //cette ligne segault je crois
 
-			}
-		}
+		// 	}
+		// }
+		//peut etre a redecommenter
 		if (user->printStatus() == "PASSWORD")
 		{
 			
@@ -38,6 +38,6 @@ namespace ft {
 		if (DEBUG)
 			print_User(user);
 
-		std::cout << "fin de fonction server::user \n\n";
+
 	}
 }

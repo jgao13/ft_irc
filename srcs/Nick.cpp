@@ -14,7 +14,6 @@ namespace ft
 {
 	bool	invalideChar(std::string nickname)
 	{
-		std::cout << "Invalide char check\n\n";
 		const char *valid_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-"; //source chatgpt
 		for (int i = 0; i < nickname.length(); i++)
 		{
