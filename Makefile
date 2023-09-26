@@ -7,7 +7,7 @@ BIN_DIR	=	temp/
 O_DIR	=	temp/obj/
 
 # COMPILE
-CXX			=	g++ -std=c++98
+CXX			=	g++ -g -o -std=c++98
 CFLAGSXX	=	-Wall -Wextra -Werror -Iinclude/ -g3 -D DEBUG
 DEPEND		=
 
@@ -29,7 +29,8 @@ S_FILES		=	main.cpp	\
 				topic.cpp \
 				invite.cpp \
 				mode.cpp \
-				whois.cpp
+				whois.cpp \
+				ping.cpp
 
 SRCS	=	$(addprefix $(S_DIR), $(S_FILES))
 

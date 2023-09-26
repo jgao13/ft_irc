@@ -108,6 +108,11 @@ namespace ft
 			std::string	getFirstName();
 			std::string	getLastName();
 			std::string	printStatus();
+
+			//channel
+    		bool isInvitedTo(const std::string& channelName) const;
+    		void joinChannel(Channel* channel);
+
 			
 
 
@@ -133,6 +138,8 @@ namespace ft
 			int								_flags;
 			sockaddr						_useraddress;
 
+			std::set<std::string> _invitedChannels;
+    		std::map<std::string, Channel*> _channels;
 
 	};
 

@@ -16,6 +16,8 @@ namespace ft
 		_commands["PASS"] = &Server::pass;
 		_commands["JOIN"] = &Server::join;
 		_commands["NICK"] = &Server::nick;
+		_commands["PING"] = &Server::ping;
+		_commands["MODE"] = &Server::mode;
 
 		print_server();
 
@@ -29,6 +31,11 @@ namespace ft
 		delete (_network);
 		// close(socket_fd);
 		// close(epoll_fd);
+	}
+
+	void Server::addChannel(const std::string& channelName, Channel* channel)
+	{
+    	_channelList[channelName] = channel;
 	}
 
 	int	Server::accept_connexion() 
@@ -145,14 +152,14 @@ namespace ft
 	{
 		std::cout << ORANGE << "Polling for input...\n" << RESET;
 		int event_count = epoll_wait(_epoll_fd, events, MAX_EVENTS, 60 * 3 * 1000);
-		if (DEBUG)
-		{
-			int j = 0;
-			for (int i = 0; events[i].events != 0; i++)
-				j++;
-			std::cout << SILVER << "EPOLL WAIT STUFF\n----------\n" << " MAXEVENT== "
-			<< MAX_EVENTS << ", NUMBER OF EVENTS == " << j << RESET << std::endl;
-		}
+		// if (DEBUG)
+		// {
+		// 	int j = 0;
+		// 	for (int i = 0; events[i].events != 0; i++)
+		// 		j++;
+		// 	std::cout << SILVER << "EPOLL WAIT STUFF\n----------\n" << " MAXEVENT== "
+		// 	<< MAX_EVENTS << ", NUMBER OF EVENTS == " << j << RESET << std::endl;
+		// }
 		std::cout << GREEN << "EVENT COUNT == " << event_count << RESET << "\n"; 
 		if (event_count == -1)
 			throw(std::runtime_error("epoll_wait a merdé\n"));
@@ -458,7 +465,7 @@ std::string		ft::Server::strToUpper(std::string str_target)
 	void	ft::Server::print_server(void)
 	{
 		std::cout << PURPLE << "SERVER:\n----------\n";
-		print_epoll_setup();
+		//print_epoll_setup();
 		print_part4();
 		std::cout << "\n-----END OF SERVER CHECK-------\n";
 	}

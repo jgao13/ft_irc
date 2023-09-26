@@ -5,22 +5,22 @@ namespace ft
 {
 	User::User(int fd, sockaddr address) : _userfd(fd), _useraddress(address), _flags(0), _status(PASSWORD)
 	{
-		if (DEBUG)
-		{
-			std::cout << BLUE << "\n------------\n" << "USER CREATION INFO:\n-----------\n"
-			<< DEEPSKYBLUE << "_USERFD == " << RESET << _userfd << "\n"
-			<< DEEPSKYBLUE << "_FIRST_NAME == " << RESET << _first_name << "\n"
-			<< DEEPSKYBLUE << "_LAST_NAME == " << RESET << _last_name << "\n"
-			<< DEEPSKYBLUE << "_ADDRESS == " << RESET;
-			struct sockaddr_in *addrin = (struct sockaddr_in *)&address;
-			std::cout << inet_ntoa(addrin->sin_addr) << ":" << ntohs(addrin->sin_port) 
-			<< "\n---------\n";
+		// if (DEBUG)
+		// {
+		// 	std::cout << BLUE << "\n------------\n" << "USER CREATION INFO:\n-----------\n"
+		// 	<< DEEPSKYBLUE << "_USERFD == " << RESET << _userfd << "\n"
+		// 	<< DEEPSKYBLUE << "_FIRST_NAME == " << RESET << _first_name << "\n"
+		// 	<< DEEPSKYBLUE << "_LAST_NAME == " << RESET << _last_name << "\n"
+		// 	<< DEEPSKYBLUE << "_ADDRESS == " << RESET;
+		// 	struct sockaddr_in *addrin = (struct sockaddr_in *)&address;
+		// 	std::cout << inet_ntoa(addrin->sin_addr) << ":" << ntohs(addrin->sin_port) 
+		// 	<< "\n---------\n";
 
-			// for (int i = 0; _useraddress.sa_data)
-		}
-		// _userfd = socket(AF_INET, SOCK_STREAM, 0);
-		// if (_socket = -1)
-		// 	throw (std::runtime_error(std::string("Problem configuring new user")));
+		// 	// for (int i = 0; _useraddress.sa_data)
+		// }
+		_userfd = socket(AF_INET, SOCK_STREAM, 0);
+		//if (_socket = -1)
+		//	throw (std::runtime_error(std::string("Problem configuring new user")));
 	}
 
 	void	User::sendMsg(std::string message)
@@ -81,4 +81,15 @@ namespace ft
 	std::string	User::hostname() const					{return _hostname;}
 	int			User::userfd() const 					{return _userfd;}
 	//bool		User::isRegistered() const				{return (_status<<0)}
+
+	bool User::isInvitedTo(const std::string& channelName) const {
+    // Vérifie si l'utilisateur a été invité dans le canal spécifié
+    return _invitedChannels.find(channelName) != _invitedChannels.end();
+}
+
+void User::joinChannel(Channel* channel) {
+    // Ajoute l'utilisateur au canal
+    _channels[channel->getName()] = channel;
+    // Vous pouvez également effectuer d'autres actions ici, comme l'ajout de l'utilisateur aux opérateurs, etc.
+}
 };

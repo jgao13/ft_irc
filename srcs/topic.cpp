@@ -4,7 +4,7 @@ namespace ft
 {
 void Server::topic(User* sender, Command* cmd) {
     // Vérifie que l'utilisateur est bien enregistré
-    if (sender->printStatus() != "REGISTERED") {
+    if (sender->printStatus() != "REGISTER") {
         sender->sendMsg("451 ERR_NOTREGISTERED :You have not registered\r\n");
         return;
     }
@@ -40,12 +40,12 @@ void Server::topic(User* sender, Command* cmd) {
             }
         else 
         {
-            std::cout << "332 " << channel->getName() << " :" <<channel->getTopic() << std::endl; //pas sur qu'il faut que sa d'ecrit
-            return ;
+            sender->sendMsg("332 " + channel->getName() + " :" + channel->getTopic()); //pas sur qu'il faut que sa d'ecrit
+            return ; //sendmessage plus que std::cout la
         }
     }
     // Vérifie que l'utilisateur a le droit de changer le sujet (topic) du canal
-    if (!channel->isOperator(sender)) {
+    if (!channel->isOperator(sender) && channel->isTopicProtected() == true) {
         sender->sendMsg("482 ERR_CHANOPRIVSNEEDED :You're not channel operator\r\n");
         return;
     }

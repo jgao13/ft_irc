@@ -155,8 +155,11 @@ namespace ft
 			void	invite(User * user, Command *cmd);
 			void	topic(User *user, Command *cmd);
 			void	whois(User *user, Command *cmd);
+			void	ping(User * user, Command *  cmd);
+			void	mode(User * user, Command *  cmd);
 
-
+			//par rapport au channel
+			void addChannel(const std::string& channelName, Channel * channel);
 			/* DEBUG */
 			// void	clearFd() {close(socket_fd); close(epoll_fd);}
 	};

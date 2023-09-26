@@ -43,3 +43,10 @@ Il faut un client IRC, ici IRSSI
 pour lancer le client, taper IRSSI
 /connect 127.0.0.1 8080 (en gros addresse et port)
 il faut configurer IRSSI
+
+
+/join a refaire 
+/continuer mode
+/class channel set a false pour tout au debut 
+
+et apres inchallah

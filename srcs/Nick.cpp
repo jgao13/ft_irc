@@ -42,15 +42,11 @@ namespace ft
 			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(431, user)));
 			return ;
 		}
-			//std::cout << 431 << std::endl;
 		else if (nick.size() > 9 || !invalideChar(nick))
 		{
 			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(432, user)));
 			return ;
 		}
-	//		std::cout << 432 << std::endl;
-		//else if(verifier la liste de tous les pseudo mais je sais pas ou ils sont stocker dans le channel)
-			//{occurence trouver return erreur 433}
 		else
 		{
 			std::map<int, User *>::iterator it;
@@ -68,8 +64,7 @@ namespace ft
 		}
 
 			//print old NICK new (source chat gpt tu connais)
-			user->sendMsg("TA BIEN CHANGER DE PSEUDO FDP\r\n");
-			//std::cout << user->getNickname() << " NICK " << nick << std::endl; 
+			user->sendMsg("TA BIEN CHANGER DE PSEUDO FDP\r\n"); 
 			user->setNickname(nick);
 
 		if (DEBUG)
