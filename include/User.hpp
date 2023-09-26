@@ -138,7 +138,7 @@ namespace ft
 			int								_flags;
 			sockaddr						_useraddress;
 
-			std::set<std::string> _invitedChannels;
+			//std::set<std::string> _invitedChannels;
     		std::map<std::string, Channel*> _channels;
 
 	};

@@ -21,7 +21,7 @@ namespace ft
 		}
 		else
 			{
-				std::cout << "pass envoyer :" << password << " pass du server : " << getPassword() << "\n\n\n\n";
+				//std::cout << "pass envoyer :" << password << " pass du server : " << getPassword() << "\n\n\n\n";
 				if (password == getPassword())
 				{
 					user->setStatus(User::REGISTER);

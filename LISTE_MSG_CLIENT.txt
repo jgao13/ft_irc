@@ -2,3 +2,11 @@ CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
 CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shami<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+CAP LS<CR><LF>
+PASS izimah<CR><LF>NICK shami<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>

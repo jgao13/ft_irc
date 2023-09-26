@@ -37,7 +37,6 @@ int	Network::init_server_socket(long int port)
 	}
 	if (fcntl(server_fd, F_SETFL, opt | O_NONBLOCK) < 0)
 		throw std::runtime_error(std::string("fcntl failed: ") + strerror(errno));
-
 	struct sockaddr_in addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(port);
@@ -49,6 +48,7 @@ int	Network::init_server_socket(long int port)
 	ret = listen(server_fd, backlog);
 	if (ret != 0)
 		throw std::runtime_error(std::string("listen failed: ") + strerror(errno));
+
 	return (server_fd);
 }
 
