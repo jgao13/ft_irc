@@ -25,7 +25,7 @@ namespace ft
 
 	User::User(int fd, sockaddr address)
 	{	
-		_userfd = fd;	
+		//_userfd = fd;	
 		_userfd = socket(AF_INET, SOCK_STREAM, 0);
 		_isServerOperator = false;
 
@@ -46,16 +46,24 @@ namespace ft
 	{
 		const char *	data = message.c_str();
 		size_t			length = message.size();
+		//std::cout << data << "length : " << length<< std::endl;
 		std::size_t	sent = 0;
 		while (sent < length)
 		{
-			long int ret = ::send(_userfd, data + sent, length - sent, MSG_NOSIGNAL);
+			// ok le - 1 que j'ai rajouter sauve le truc donc il y a un probleme genre le _userfd change
+			long int ret = ::send(_userfd /*- 1*/, data + sent, length - sent, MSG_NOSIGNAL);
+			// std::cout << "ret dans send msg :" << ret << std::endl;
+			std::cout << "userfd dans send msg :" << _userfd << std::endl;
+			// std::cout << "data + length dans send msg :" << data + length << std::endl;
+			// std::cout << "length - sent :" << length - sent << std::endl;
+			// std::cout << "MSG_NOSIGNQL dans send msg :" << MSG_NOSIGNAL << std::endl;
+			
 			if (ret == -1) {
 				if (errno == EAGAIN || errno == EWOULDBLOCK)
 					continue;
 				else
 				{
-					std::cout << "c bien sa qui envoie le error\n";
+					//std::cout << "l'erreur envoyer : " << strerror(errno)<< std::endl;
 					throw std::runtime_error(std::string("send error: ") + strerror(errno));
 				}
 			}
