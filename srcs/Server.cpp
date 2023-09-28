@@ -35,7 +35,8 @@ namespace ft
 
 	void Server::addChannel(const std::string& channelName, Channel* channel)
 	{
-    	_channelList[channelName] = channel;
+		_channels.insert(std::pair<std::string, Channel *>(channelName, channel));
+    	//_channelList[channelName] = channel;
 	}
 
 	int	Server::accept_connexion() 
@@ -404,8 +405,8 @@ namespace ft
 
  ft::Channel *  	ft::Server::getChannelByName(std::string const channelName) const
  {
- 	std::map<std::string, ft::Channel *>::const_iterator it = _channelList.find(channelName);
- 	if (it == _channelList.end())
+ 	std::map<std::string, ft::Channel *>::const_iterator it = _channels.find(channelName);
+ 	if (it == _channels.end())
  		return NULL;
  	else
  		return it->second;

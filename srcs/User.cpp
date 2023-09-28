@@ -3,24 +3,43 @@
 
 namespace ft
 {
-	User::User(int fd, sockaddr address) : _userfd(fd), _useraddress(address), _flags(0), _status(PASSWORD)
-	{
-		// if (DEBUG)
-		// {
-		// 	std::cout << BLUE << "\n------------\n" << "USER CREATION INFO:\n-----------\n"
-		// 	<< DEEPSKYBLUE << "_USERFD == " << RESET << _userfd << "\n"
-		// 	<< DEEPSKYBLUE << "_FIRST_NAME == " << RESET << _first_name << "\n"
-		// 	<< DEEPSKYBLUE << "_LAST_NAME == " << RESET << _last_name << "\n"
-		// 	<< DEEPSKYBLUE << "_ADDRESS == " << RESET;
-		// 	struct sockaddr_in *addrin = (struct sockaddr_in *)&address;
-		// 	std::cout << inet_ntoa(addrin->sin_addr) << ":" << ntohs(addrin->sin_port) 
-		// 	<< "\n---------\n";
+	// User::User(int fd, sockaddr address) : _userfd(fd), _useraddress(address), _flags(0), _status(PASSWORD)
+	// {
+	// 	// if (DEBUG)
+	// 	// {
+	// 	// 	std::cout << BLUE << "\n------------\n" << "USER CREATION INFO:\n-----------\n"
+	// 	// 	<< DEEPSKYBLUE << "_USERFD == " << RESET << _userfd << "\n"
+	// 	// 	<< DEEPSKYBLUE << "_FIRST_NAME == " << RESET << _first_name << "\n"
+	// 	// 	<< DEEPSKYBLUE << "_LAST_NAME == " << RESET << _last_name << "\n"
+	// 	// 	<< DEEPSKYBLUE << "_ADDRESS == " << RESET;
+	// 	// 	struct sockaddr_in *addrin = (struct sockaddr_in *)&address;
+	// 	// 	std::cout << inet_ntoa(addrin->sin_addr) << ":" << ntohs(addrin->sin_port) 
+	// 	// 	<< "\n---------\n";
 
-		// 	// for (int i = 0; _useraddress.sa_data)
-		// }
+	// 	// 	// for (int i = 0; _useraddress.sa_data)
+	// 	// }
+	 	//_userfd = socket(AF_INET, SOCK_STREAM, 0);
+	// 	//if (_socket = -1)
+	// 	//	throw (std::runtime_error(std::string("Problem configuring new user")));
+	// }
+
+	User::User(int fd, sockaddr address)
+	{	
+		_userfd = fd;	
 		_userfd = socket(AF_INET, SOCK_STREAM, 0);
-		//if (_socket = -1)
-		//	throw (std::runtime_error(std::string("Problem configuring new user")));
+		_isServerOperator = false;
+
+
+		_status = PASSWORD;
+
+		_requirements = 0;
+		_mode = 0;
+		_channelCount = 0;
+
+		_quit = false;
+		_flags = 0;
+		_useraddress = address;
+
 	}
 
 	void	User::sendMsg(std::string message)
@@ -35,7 +54,10 @@ namespace ft
 				if (errno == EAGAIN || errno == EWOULDBLOCK)
 					continue;
 				else
+				{
+					std::cout << "c bien sa qui envoie le error\n";
 					throw std::runtime_error(std::string("send error: ") + strerror(errno));
+				}
 			}
 			sent += ret;
 			if (DEBUG)

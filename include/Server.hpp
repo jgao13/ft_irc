@@ -122,7 +122,7 @@ namespace ft
 			std::map<int , User *>			_userList;
 			//std::map<int, User *>			_nickList;
 			std::string						_serverName;
-			std::map<std::string, Channel *>	_channelList;
+			std::map<std::string, Channel *>	_channels;
 			Command_List					_commands;
 			std::vector<std::string>		_list_connected_users;
 

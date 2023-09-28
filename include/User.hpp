@@ -122,7 +122,7 @@ namespace ft
 			int								_userfd;
 			User() {};
 			bool							_isServerOperator;
-			std::set<Channel *> 			_channelList;
+			//std::set<Channel *> 			_channelList; //une map ?
 			std::string						_username;
 			std::string						_nickname;
 			std::string						_first_name;
@@ -140,6 +140,7 @@ namespace ft
 
 			//std::set<std::string> _invitedChannels;
     		std::map<std::string, Channel*> _channels;
+			std::map<std::string, Channel *> _invitedChannels;
 
 	};
 
