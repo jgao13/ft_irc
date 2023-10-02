@@ -55,6 +55,7 @@ void Server::topic(User* sender, Command* cmd) {
 
     // Définit le nouveau sujet (topic) du canal
     channel->setTopic(newTopic);
+    std::cout << "topic actuel ?" << newTopic << std::endl;
 
     // Informe les utilisateurs du changement de sujet (topic)
     std::string topicMessage = ":" + sender->getNickname() + " TOPIC " + channelName + " :" + newTopic + "\r\n";

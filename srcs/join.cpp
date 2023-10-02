@@ -12,15 +12,19 @@ void Server::join(User* user, Command* cmd) {
 	//else if ( > 2) un check si superieur a 2 ?
 
     std::string channelName = cmd->arguments()[0];
+    std::cout << "channel name dans join : " << channelName << std::endl;
 
 
 
     // Rechercher le canal par son nom
     Channel* channel = getChannelByName(channelName);
-	std::string key = NULL;
+	std::string key; 
+    //std::cout << "\n\n\n\n juste apres getchannByname\n\n\n\n";
 
 	if (cmd->arguments().size() == 2)
 		key = cmd->arguments()[1];
+
+
     if (!channel) {
         // Si le canal n'existe pas, le créer
         channel = new Channel(channelName);
@@ -33,12 +37,14 @@ void Server::join(User* user, Command* cmd) {
 		}
     }
 
-    // Vérifier si l'utilisateur est déjà membre du canal
+    
     if (channel->isUserMember(user))
 	{
         user->sendMsg("479 " + user->getNickname() + " " + channelName + " :Already registered\r\n");
         return;
     }
+    // Vérifier si l'utilisateur est déjà membre du canal
+
     // Vérifier si le canal est invite-only
     if (channel->isInviteOnly()) {
         // Vérifier si l'utilisateur a été invité

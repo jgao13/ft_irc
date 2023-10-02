@@ -34,6 +34,7 @@ namespace ft
 			std::string					command() const;
 			std::string					message() const;
 			// DEBUG
+			int print_command();
 			// void						print_command(void);
 
 			// std::vector<str::string>	arguments() const;

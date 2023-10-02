@@ -39,4 +39,16 @@ namespace	ft
 	//	CONSTRUCTOR AND DESTRUCTOR
 	Command::Command(){/*This shouldn't be used*/}
 	Command::~Command() {}
+
+	int Command::print_command(){
+    std::cout << "Command: " << _command << std::endl;
+    std::cout << "Arguments: ";
+    for (std::vector<std::string>::const_iterator it = _arguments.begin(); it!= _arguments.end(); ++it)
+    {
+        std::cout << "|" << *it << "| ";
+    }
+    std::cout << std::endl;
+    std::cout << "Message: " << _message << std::endl;
+    return (0);
+    }
 }

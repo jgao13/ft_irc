@@ -6,7 +6,7 @@ namespace ft {
         bool inviteOnly = false; 
         bool topicProtected = false;
         bool keyActivated = false; 
-        std::string key = NULL; 
+        //std::string key = NULL; 
         bool limitedUser = false;
         unsigned int numberOfMaxUser = 64; 
         unsigned int numberofCurrentUser = 0;
