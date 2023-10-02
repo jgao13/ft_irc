@@ -18,6 +18,7 @@ namespace ft
 		_commands["NICK"] = &Server::nick;
 		_commands["PING"] = &Server::ping;
 		_commands["MODE"] = &Server::mode;
+		_commands["TOPIC"] = &Server::topic;
 
 		print_server();
 
@@ -297,6 +298,7 @@ namespace ft
 	{
 		std::string delimiter("\r\n");
 		size_t position;
+		std::cout << "Server::processMsgEvent user_fd == " << user_fd << "\n";
 		while ((position = buffer.find(delimiter)) != std::string::npos)
 		{
 			std::string message;
@@ -306,7 +308,7 @@ namespace ft
 				std::cout << GREEN << "\n*** | SERVER | ***\n" << RESET;
 				std::cout << GREEN << "Server::processMsgEvent \nis processing the message: |"
 				<< RESET << buffer << GREEN << "| send by the User |" << RESET << user->nickname()
-				<< GREEN << "| with socketfd == " << RESET << user_fd << "\n";
+				<< GREEN << "| with socketfd == " << RESET << user->getUserFd() << "\n";
 			}
 			if (!user)
 				std::cerr << "Logical problem: user socket fd is not in the Userlist\n";
@@ -453,7 +455,19 @@ std::string		ft::Server::strToUpper(std::string str_target)
 		std::cout << "end of _userlist\n";
 		std::cout << "_server_password: " << this->_password << std::endl;
 		std::cout << "_serverName: " << this->_serverName << std::endl;
+
+		
+		std::map<std::string, Channel *>::iterator start = 	this->_channels.begin();
+		std::map<std::string, Channel *>::iterator fin = 	this->_channels.end();
+		std::cout << "channel list :\n";
+		while (start != fin)
+		{
+			std::cout << start->first << " => " << start->second << std::endl;
+			start++;
+		}
+		std::cout << "end of channel list\n";
 		std::cout << "Channel list et Command_list a faire\n";
+
 		std::cout << "_list_connected_users: ";
 		for (int i = 0; i < this->_list_connected_users.size(); i++)
 		{

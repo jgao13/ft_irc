@@ -25,8 +25,8 @@ namespace ft
 
 	User::User(int fd, sockaddr address)
 	{	
-		//_userfd = fd;	
-		_userfd = socket(AF_INET, SOCK_STREAM, 0);
+		_userfd = fd;	
+		// _userfd = socket(AF_INET, SOCK_STREAM, 0);
 		_isServerOperator = false;
 
 
@@ -48,6 +48,8 @@ namespace ft
 		size_t			length = message.size();
 		//std::cout << data << "length : " << length<< std::endl;
 		std::size_t	sent = 0;
+							std::cout << "User::sendMsg user fd == " << this->getUserFd() << "\n";
+
 		while (sent < length)
 		{
 			// ok le - 1 que j'ai rajouter sauve le truc donc il y a un probleme genre le _userfd change

@@ -25,7 +25,7 @@ namespace ft
 				if (password == getPassword())
 				{
 					user->setStatus(User::REGISTER);
-					//std::cout << "ces la commande pass qui fait bug ?\n";
+					std::cout << "Pass user fd == " << user->getUserFd() << "\n";
 					user->sendMsg("001 RPL_WELCOME :Welcome to the IRC server\r\n");
 					//std::cout << "c pas elle\n";
 					
