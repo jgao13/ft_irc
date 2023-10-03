@@ -1,6 +1,9 @@
 #include "../include/Server.hpp"
 namespace ft
 {
+
+    //faut aussi check pour le channel
+    
 void Server::whois(User* sender, Command* cmd) {
     // Vérifiez que la commande a des paramètres
     if (cmd->arguments().size() < 1) {

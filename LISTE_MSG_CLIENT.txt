@@ -771,3 +771,194 @@ PING 127.0.0.1<CR><LF>
 PING 127.0.0.1<CR><LF>
 PING 127.0.0.1<CR><LF>
 PING 127.0.0.1<CR><LF>
+pass izimah<LF>
+
+/pass izimah<LF>
+/nick<LF>
+/user<LF>
+<LF>
+<LF>
+<LF>
+<LF>
+<LF>
+<LF>
+
+USER<LF>
+user izimah<LF>
+<LF>
+<LF>
+<LF>
+<LF>
+<LF>
+<LF>
+<LF>
+<LF>
+
+PASS izimah<LF>
+PASS izimah<LF>
+PING<LF>
+nc 127.0.0.1 6667<LF>
+
+CAP LS<CR><LF>PASS izimah<CR><LF>
+NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK cyrielle<CR><LF>
+JOIN #new<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>
+NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+NICK said<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+WHOIS cyrielle<CR><LF>
+JOIN #new<CR><LF>
+TOPIC #new :alors la zone ca dit quoi<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+QUIT :leaving<CR><LF>
+PING 127.0.0.1<CR><LF>
+
+userhost<CR><LF>
+userhost<CR><LF>
+WHOIS cyrielle<CR><LF>
+PING 127.0.0.1<CR><LF>
+WHOIS new<CR><LF>
+QUIT :leaving<CR><LF>
+
+CAP LS<CR><LF>PASS izimah<CR><LF>
+NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK nouvo<CR><LF>
+PRIVMSG 0 :\Ox1PING 1696339095 409634\Ox1<CR><LF>
+PRIVMSG nouvo :eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK cyrielle<CR><LF>
+PRIVMSG cyrielle :eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee<CR><LF>
+NICK cyrielle<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PRIVMSG cyrielle :eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK cyrielle<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK said<CR><LF>
+PRIVMSG said :eee<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>
+USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+NICK cyrielle<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>
+NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK said<CR><LF>
+PING 127.0.0.1<CR><LF>
+PRIVMSG said :eee<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+NICK said<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK cyrielle<CR><LF>
+PRIVMSG said :tes grands morts la<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+NICK said<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+NICK cyrielle<CR><LF>
+PING 127.0.0.1<CR><LF>
+PRIVMSG said :tes grands morts la<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>
+NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+NICK said<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+NICK cyrielle<CR><LF>
+PING 127.0.0.1<CR><LF>
+PRIVMSG said :tes grands morts la<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PRIVMSG cyrielle :tu veux quoi toi ?<CR><LF>
+PRIVMSG said :toi tu veux quoi toi ?<CR><LF>
+PRIVMSG cyrielle :bien ou quoi, t'habite dans le coin ou quoi ?<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>
+NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>
+USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>
+WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+CAP LS<CR><LF>PASS izimah<CR><LF>
+NICK shamizi<CR><LF>USER shamizi shamizi 127.0.0.1 :Said HAMIZI<CR><LF>
+MODE RPL_WELCOME +i<CR><LF>WHOIS shamizi<CR><LF>
+PING 127.0.0.1<CR><LF>
+QUIT :Lost terminal<CR><LF>
+QUIT :Lost terminal<CR><LF>
+QUIT :Lost terminal<CR><LF>
+QUIT :Lost terminal<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+PING 127.0.0.1<CR><LF>
+QUIT :leaving<CR><LF>
+QUIT :leaving<CR><LF>
+QUIT :leaving<CR><LF>
+QUIT :leaving<CR><LF>

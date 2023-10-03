@@ -12,7 +12,7 @@ void Server::join(User* user, Command* cmd) {
 	//else if ( > 2) un check si superieur a 2 ?
 
     std::string channelName = cmd->arguments()[0];
-    std::cout << "channel name dans join : " << channelName << std::endl;
+    //std::cout << "channel name dans join : " << channelName << std::endl;
 
 
 

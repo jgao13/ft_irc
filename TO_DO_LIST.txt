@@ -1,29 +1,15 @@
 	OBJECTIF
 	https://modern.ircdocs.horse/#connection-registration
 	
-	- Une fonction propre print_User(User *) a faire dans Debug_ft_IRC.cpp serait grave cool
-	- PASS :
-			- PASS <mdp> : mdp = mdp que l'utilisateur souhaite utiliser pour se co
-			- cas d'erreur : 
-						- CODE_ERR_NEEDMOREPARAMS (461), argument vide
-						- CODE_ERR_ALREADYREGISTRED (462), envoyer le mdp apres avoir deja ete register
-						- RPL_WELCOME (001), message de biemvemue quand authentification reussi
 	- USER: 
 			- défini le Username et le Realname of the user
 			- SI le Username est deja pris, doit rajouter un '~' avant le Username du gars
 			- 
-	- NICK:  bon la il marche mais faut le finir, avec la gestion d'erreur (431,432,433,436) et check pour les nickname deja pris
-		- Il faut refuser les caracteres chelou (les caracteres chelou ???)
+	- NICK: 
 		- et on va faire ca propre et envoyer un message aux autres clients que qqun a changé son NICK
-		- apparemment, la doc a l'air d'insinuer qu'on peut 'ignorer' le Nick command, c'est bizarre, je sais pas trop quel comportement
-			on doit faire du coup si un User a pas de nick.
 		- https://modern.ircdocs.horse/#nick-message
 	- Server::DisconnectUser a faire
-	- Channel a faire: 
-		- list user, 
-	- Gestion propre des déconnexions (supprimer le user sur toutes les listes)
-	- RUN server: peut etre revoir le systeme du "done" pour arreter la boucle
-		quand il y a une déconnexion
+
 
 	- KICK : KICK <channel> <user> [option : commentaire]
 			- si channel ou user vide : code erreur 461 (need more param)
@@ -32,21 +18,15 @@
 			- si la personne qui envoie != operator code erreur 482, CHANPRIVNEEDED
 	
 	- INVITE : INVITE <nickname> <channel>
-				- l'operator utilise la commande avec le nickname a inviter et le nom du channel
-				- si channel ou nickname vide : code erreur 461
-				- verifier si utilisateur est operator du channel
-				- si nickname n'existe pas : code erreur 401
-				- si pas operator : code erreur 482
 				- l'utilisateur qui recoit PEUT ACCEPTER OU REFUSER 
 
 Il faut un client IRC, ici IRSSI
 pour lancer le client, taper IRSSI
 /connect 127.0.0.1 8080 (en gros addresse et port)
-il faut configurer IRSSI
 
 
-/join a refaire 
-/continuer mode
-/class channel set a false pour tout au debut 
 
-et apres inchallah
+////////////////////////////////////////////////////
+- verifier la commande user
+- faire les fonctions pour quitter un chan
+- mode a faire (commentaire de quoi faire dessus)

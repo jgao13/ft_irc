@@ -52,22 +52,13 @@ namespace ft
 
 		while (sent < length)
 		{
-			// ok le - 1 que j'ai rajouter sauve le truc donc il y a un probleme genre le _userfd change
-			long int ret = ::send(_userfd /*- 1*/, data + sent, length - sent, MSG_NOSIGNAL);
-			// std::cout << "ret dans send msg :" << ret << std::endl;
-			std::cout << "userfd dans send msg :" << _userfd << std::endl;
-			// std::cout << "data + length dans send msg :" << data + length << std::endl;
-			// std::cout << "length - sent :" << length - sent << std::endl;
-			// std::cout << "MSG_NOSIGNQL dans send msg :" << MSG_NOSIGNAL << std::endl;
 			
+			long int ret = ::send(_userfd , data + sent, length - sent, MSG_NOSIGNAL);	
 			if (ret == -1) {
 				if (errno == EAGAIN || errno == EWOULDBLOCK)
 					continue;
 				else
-				{
-					//std::cout << "l'erreur envoyer : " << strerror(errno)<< std::endl;
 					throw std::runtime_error(std::string("send error: ") + strerror(errno));
-				}
 			}
 			sent += ret;
 			if (DEBUG)
