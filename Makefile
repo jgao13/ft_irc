@@ -30,7 +30,8 @@ S_FILES		=	main.cpp	\
 				invite.cpp \
 				mode.cpp \
 				whois.cpp \
-				ping.cpp
+				ping.cpp \
+				privmsg.cpp 
 
 SRCS	=	$(addprefix $(S_DIR), $(S_FILES))
 

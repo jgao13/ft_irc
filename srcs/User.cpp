@@ -124,4 +124,19 @@ void User::joinChannel(Channel* channel) {
     _channels[channel->getName()] = channel;
     // Vous pouvez également effectuer d'autres actions ici, comme l'ajout de l'utilisateur aux opérateurs, etc.
 }
+
+Channel* User::getCurrentChannel(User* user) {
+	std::map<std::string, Channel *>::iterator it = _channels.begin();
+	std::map<std::string, Channel *>::iterator last = _channels.end();
+    // Parcourez la liste des canaux pour trouver celui où l'utilisateur est membre
+    while (it != last)
+	{
+        Channel* channel = it->second;
+        if (channel->isUserMember(user)) {
+            return channel;
+			it++;
+        }
+    }
+    return NULL;
+}
 };

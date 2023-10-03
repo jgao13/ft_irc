@@ -19,11 +19,13 @@ namespace ft
 		_commands["PING"] = &Server::ping;
 		_commands["MODE"] = &Server::mode;
 		_commands["TOPIC"] = &Server::topic;
-
-		print_server();
-
 		_commands["USER"] = &Server::user;
 		_commands["WHOIS"] = &Server::whois;
+		_commands["INVITE"] = &Server::invite;
+		_commands["PRIVMSG"] = &Server::privmsg;
+		print_server();
+
+
 		// socket_fd = _network.init_server_socket(_port);
 	}
 

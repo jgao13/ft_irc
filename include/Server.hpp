@@ -139,6 +139,7 @@ namespace ft
 			User *				getUserByFd(int sfd) const;
 			User *				getUserByName(std::string const nickname) const;
 			Channel *			getChannelByName(std::string const channelName) const;
+
 			std::string			strToUpper(std::string const str_target);
 			// bool				isInRegistrationList(std::string) const;
 			// On a besoin de lui pour 
@@ -157,6 +158,7 @@ namespace ft
 			void	whois(User *user, Command *cmd);
 			void	ping(User * user, Command *  cmd);
 			void	mode(User * user, Command *  cmd);
+			void    privmsg(User *user, Command *cmd);
 
 			//par rapport au channel
 			void addChannel(const std::string& channelName, Channel * channel);
