@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 		std::cout << e.what() << std::endl;
 		std::cout << strerror(errno)<< std::endl;
 		// Ya moyen que strerrorname_np soit pas autorisé, ca gave un peu
-		std::cout << "ERRNO == " << errno << ", LETTER CODE == " << strerrorname_np(errno) << std::endl;
+		// std::cout << "ERRNO == " << errno << ", LETTER CODE == " << strerrorname_np(errno) << std::endl;
 		return (-1);
 		// server.clearFd();
 	}

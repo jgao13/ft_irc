@@ -49,11 +49,11 @@ namespace ft
 		//std::cout << data << "length : " << length<< std::endl;
 		std::size_t	sent = 0;
 							std::cout << "User::sendMsg user fd == " << this->getUserFd() << "\n";
+		long int ret = 0;
 
 		while (sent < length)
 		{
-			
-			long int ret = ::send(_userfd , data + sent, length - sent, MSG_NOSIGNAL);	
+			ret = ::send(_userfd , data + sent, length - sent, MSG_NOSIGNAL);
 			if (ret == -1) {
 				if (errno == EAGAIN || errno == EWOULDBLOCK)
 					continue;

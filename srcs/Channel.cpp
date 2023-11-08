@@ -51,19 +51,19 @@ namespace ft {
         _operators[user->getNickname()] = user;
     }
 
-    void Channel::removeOperator(User* user)
-    {
-        _operators.erase(user->getNickname());
-    }
+	void Channel::removeOperator(User* user)
+	{
+		_operators.erase(user->getNickname());
+	}
 
-    void Channel::sendMessageToMembers(const std::string& message)
-    {
-        for (std::map<std::string, User*>::iterator it = _members.begin(); it != _members.end(); ++it)
-        {
-            User* user = it->second;
-            user->sendMsg(message);
-        }
-    }
+	void Channel::sendMessageToMembers(const std::string& message)
+	{
+		// for (std::map<std::string, User*>::iterator it = _members.begin(); it != _members.end(); ++it)
+		// {
+		// 	User* user = it->second;
+		// 	user->sendMsg(message);
+		// }
+	}
 	std::string Channel::getTopic()
     {
         return (_topic);
