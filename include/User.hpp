@@ -108,6 +108,12 @@ namespace ft
 			std::string	getFirstName();
 			std::string	getLastName();
 			std::string	printStatus();
+			Channel * 	getCurrentChannel(User* user);
+
+			//channel
+    		bool isInvitedTo(const std::string& channelName) const;
+    		void joinChannel(Channel* channel);
+
 			
 
 
@@ -117,7 +123,7 @@ namespace ft
 			int								_userfd;
 			User() {};
 			bool							_isServerOperator;
-			std::set<Channel *> 			_channelList;
+
 			std::string						_username;
 			std::string						_nickname;
 			std::string						_first_name;
@@ -134,7 +140,8 @@ namespace ft
 			sockaddr						_useraddress;
 
 
+    		std::map<std::string, Channel*> _channels;
+			std::map<std::string, Channel *> _invitedChannels;
+
 	};
-
-
 }

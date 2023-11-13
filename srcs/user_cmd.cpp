@@ -37,7 +37,5 @@ namespace ft {
 
 		if (DEBUG)
 			print_User(user);
-
-
 	}
 }

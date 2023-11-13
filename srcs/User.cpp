@@ -3,34 +3,57 @@
 
 namespace ft
 {
-	User::User(int fd, sockaddr address) : _userfd(fd), _useraddress(address), _flags(0), _status(PASSWORD)
-	{
-		if (DEBUG)
-		{
-			std::cout << BLUE << "\n------------\n" << "USER CREATION INFO:\n-----------\n"
-			<< DEEPSKYBLUE << "_USERFD == " << RESET << _userfd << "\n"
-			<< DEEPSKYBLUE << "_FIRST_NAME == " << RESET << _first_name << "\n"
-			<< DEEPSKYBLUE << "_LAST_NAME == " << RESET << _last_name << "\n"
-			<< DEEPSKYBLUE << "_ADDRESS == " << RESET;
-			struct sockaddr_in *addrin = (struct sockaddr_in *)&address;
-			std::cout << inet_ntoa(addrin->sin_addr) << ":" << ntohs(addrin->sin_port) 
-			<< "\n---------\n";
+	// User::User(int fd, sockaddr address) : _userfd(fd), _useraddress(address), _flags(0), _status(PASSWORD)
+	// {
+	// 	// if (DEBUG)
+	// 	// {
+	// 	// 	std::cout << BLUE << "\n------------\n" << "USER CREATION INFO:\n-----------\n"
+	// 	// 	<< DEEPSKYBLUE << "_USERFD == " << RESET << _userfd << "\n"
+	// 	// 	<< DEEPSKYBLUE << "_FIRST_NAME == " << RESET << _first_name << "\n"
+	// 	// 	<< DEEPSKYBLUE << "_LAST_NAME == " << RESET << _last_name << "\n"
+	// 	// 	<< DEEPSKYBLUE << "_ADDRESS == " << RESET;
+	// 	// 	struct sockaddr_in *addrin = (struct sockaddr_in *)&address;
+	// 	// 	std::cout << inet_ntoa(addrin->sin_addr) << ":" << ntohs(addrin->sin_port) 
+	// 	// 	<< "\n---------\n";
 
-			// for (int i = 0; _useraddress.sa_data)
-		}
+	// 	// 	// for (int i = 0; _useraddress.sa_data)
+	// 	// }
+	 	//_userfd = socket(AF_INET, SOCK_STREAM, 0);
+	// 	//if (_socket = -1)
+	// 	//	throw (std::runtime_error(std::string("Problem configuring new user")));
+	// }
+
+	User::User(int fd, sockaddr address)
+	{	
+		_userfd = fd;	
 		// _userfd = socket(AF_INET, SOCK_STREAM, 0);
-		// if (_socket = -1)
-		// 	throw (std::runtime_error(std::string("Problem configuring new user")));
+		_isServerOperator = false;
+
+
+		_status = PASSWORD;
+
+		_requirements = 0;
+		_mode = 0;
+		_channelCount = 0;
+
+		_quit = false;
+		_flags = 0;
+		_useraddress = address;
+
 	}
 
 	void	User::sendMsg(std::string message)
 	{
 		const char *	data = message.c_str();
 		size_t			length = message.size();
+		//std::cout << data << "length : " << length<< std::endl;
 		std::size_t	sent = 0;
+							std::cout << "User::sendMsg user fd == " << this->getUserFd() << "\n";
+
 		while (sent < length)
 		{
-			long int ret = ::send(_userfd, data + sent, length - sent, MSG_NOSIGNAL);
+			
+			long int ret = ::send(_userfd , data + sent, length - sent, MSG_NOSIGNAL);	
 			if (ret == -1) {
 				if (errno == EAGAIN || errno == EWOULDBLOCK)
 					continue;
@@ -81,4 +104,30 @@ namespace ft
 	std::string	User::hostname() const					{return _hostname;}
 	int			User::userfd() const 					{return _userfd;}
 	//bool		User::isRegistered() const				{return (_status<<0)}
+
+	bool User::isInvitedTo(const std::string& channelName) const {
+    // Vérifie si l'utilisateur a été invité dans le canal spécifié
+    return _invitedChannels.find(channelName) != _invitedChannels.end();
+}
+
+void User::joinChannel(Channel* channel) {
+    // Ajoute l'utilisateur au canal
+    _channels[channel->getName()] = channel;
+    // Vous pouvez également effectuer d'autres actions ici, comme l'ajout de l'utilisateur aux opérateurs, etc.
+}
+
+Channel* User::getCurrentChannel(User* user) {
+	std::map<std::string, Channel *>::iterator it = _channels.begin();
+	std::map<std::string, Channel *>::iterator last = _channels.end();
+    // Parcourez la liste des canaux pour trouver celui où l'utilisateur est membre
+    while (it != last)
+	{
+        Channel* channel = it->second;
+        if (channel->isUserMember(user)) {
+            return channel;
+			it++;
+        }
+    }
+    return NULL;
+}
 };

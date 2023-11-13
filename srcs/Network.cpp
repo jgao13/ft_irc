@@ -30,17 +30,23 @@ int	Network::init_server_socket(long int port)
 		throw std::runtime_error(std::string("socket failed: ") + strerror(errno));
 	}
 	std::cout << "Server fd == " << server_fd << std::endl;
-	if (int ret = setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)) < 0)
+	
+	struct sockaddr_in addr;
+	memset(&addr, 0, sizeof(addr));
+
+	addr.sin_family = AF_INET;
+	addr.sin_port = htons(port);
+
+	if (int ret = setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)) == -1)
 	{
 		std::cout << "ret == " << ret << std::endl;
 		throw std::runtime_error(std::string("setsockopt failed: ") + strerror(errno));
 	}
 	if (fcntl(server_fd, F_SETFL, opt | O_NONBLOCK) < 0)
 		throw std::runtime_error(std::string("fcntl failed: ") + strerror(errno));
-
-	struct sockaddr_in addr;
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons(port);
+	// struct sockaddr_in addr;
+	// addr.sin_family = AF_INET;
+	// addr.sin_port = htons(port);
 
 	int ret = bind(server_fd, reinterpret_cast<struct sockaddr *>(&addr), sizeof(addr));
 	if (ret != 0)
@@ -49,6 +55,7 @@ int	Network::init_server_socket(long int port)
 	ret = listen(server_fd, backlog);
 	if (ret != 0)
 		throw std::runtime_error(std::string("listen failed: ") + strerror(errno));
+
 	return (server_fd);
 }
 
@@ -69,7 +76,7 @@ int	Network::init_server_socket(long int port)
 
 		const int opt = 1;
 		int ret = setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt));
-		if (ret < 0)
+		if (ret == -1)
 			throw std::runtime_error(std::string("setsockopt failed: ") + strerror(errno));
 		ret = fcntl(socket_fd, F_SETFL, O_NONBLOCK);
 		sockaddr_in my_addr;

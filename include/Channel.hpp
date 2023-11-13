@@ -25,8 +25,29 @@ namespace ft {
 		std::string getTopic();
 		void setTopic(std::string subject);
 
-        // preparez vous mentalement la ca va etre flou
-        //a faire, getter setter pour tout les boolend, key etc...
+    bool isInviteOnly() const ;
+    void setInviteOnly(bool inviteOnly);
+
+
+    bool isTopicProtected() const ;
+    void setTopicProtected(bool topicProtected);
+
+
+    bool isKeyActivated() const;
+    void setKeyActivated(bool keyActivated);
+
+    std::string getKey() const;
+    void setKey(const std::string& key);
+
+
+    bool isLimitedUser() const;
+    void setLimitedUser(bool limitedUser);
+
+    unsigned int getNumberOfMaxUser() const;
+    void setNumberOfMaxUser(unsigned int numberOfMaxUser);
+
+    unsigned int getNumberOfCurrentUser() const;
+    void setNumberOfCurrentUser(unsigned int numberOfCurrentUser);
 
     private:
         std::string _name; //nom du chan

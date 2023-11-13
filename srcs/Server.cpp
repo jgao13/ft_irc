@@ -16,11 +16,16 @@ namespace ft
 		_commands["PASS"] = &Server::pass;
 		_commands["JOIN"] = &Server::join;
 		_commands["NICK"] = &Server::nick;
-
-		print_server();
-
+		_commands["PING"] = &Server::ping;
+		_commands["MODE"] = &Server::mode;
+		_commands["TOPIC"] = &Server::topic;
 		_commands["USER"] = &Server::user;
 		_commands["WHOIS"] = &Server::whois;
+		_commands["INVITE"] = &Server::invite;
+		_commands["PRIVMSG"] = &Server::privmsg;
+		print_server();
+
+
 		// socket_fd = _network.init_server_socket(_port);
 	}
 
@@ -29,6 +34,12 @@ namespace ft
 		delete (_network);
 		// close(socket_fd);
 		// close(epoll_fd);
+	}
+
+	void Server::addChannel(const std::string& channelName, Channel* channel)
+	{
+		_channels.insert(std::pair<std::string, Channel *>(channelName, channel));
+    	//_channelList[channelName] = channel;
 	}
 
 	int	Server::accept_connexion() 
@@ -145,14 +156,14 @@ namespace ft
 	{
 		std::cout << ORANGE << "Polling for input...\n" << RESET;
 		int event_count = epoll_wait(_epoll_fd, events, MAX_EVENTS, 60 * 3 * 1000);
-		if (DEBUG)
-		{
-			int j = 0;
-			for (int i = 0; events[i].events != 0; i++)
-				j++;
-			std::cout << SILVER << "EPOLL WAIT STUFF\n----------\n" << " MAXEVENT== "
-			<< MAX_EVENTS << ", NUMBER OF EVENTS == " << j << RESET << std::endl;
-		}
+		// if (DEBUG)
+		// {
+		// 	int j = 0;
+		// 	for (int i = 0; events[i].events != 0; i++)
+		// 		j++;
+		// 	std::cout << SILVER << "EPOLL WAIT STUFF\n----------\n" << " MAXEVENT== "
+		// 	<< MAX_EVENTS << ", NUMBER OF EVENTS == " << j << RESET << std::endl;
+		// }
 		std::cout << GREEN << "EVENT COUNT == " << event_count << RESET << "\n"; 
 		if (event_count == -1)
 			throw(std::runtime_error("epoll_wait a merdé\n"));
@@ -289,6 +300,7 @@ namespace ft
 	{
 		std::string delimiter("\r\n");
 		size_t position;
+		std::cout << "Server::processMsgEvent user_fd == " << user_fd << "\n";
 		while ((position = buffer.find(delimiter)) != std::string::npos)
 		{
 			std::string message;
@@ -298,7 +310,7 @@ namespace ft
 				std::cout << GREEN << "\n*** | SERVER | ***\n" << RESET;
 				std::cout << GREEN << "Server::processMsgEvent \nis processing the message: |"
 				<< RESET << buffer << GREEN << "| send by the User |" << RESET << user->nickname()
-				<< GREEN << "| with socketfd == " << RESET << user_fd << "\n";
+				<< GREEN << "| with socketfd == " << RESET << user->getUserFd() << "\n";
 			}
 			if (!user)
 				std::cerr << "Logical problem: user socket fd is not in the Userlist\n";
@@ -397,8 +409,8 @@ namespace ft
 
  ft::Channel *  	ft::Server::getChannelByName(std::string const channelName) const
  {
- 	std::map<std::string, ft::Channel *>::const_iterator it = _channelList.find(channelName);
- 	if (it == _channelList.end())
+ 	std::map<std::string, ft::Channel *>::const_iterator it = _channels.find(channelName);
+ 	if (it == _channels.end())
  		return NULL;
  	else
  		return it->second;
@@ -445,7 +457,19 @@ std::string		ft::Server::strToUpper(std::string str_target)
 		std::cout << "end of _userlist\n";
 		std::cout << "_server_password: " << this->_password << std::endl;
 		std::cout << "_serverName: " << this->_serverName << std::endl;
+
+		
+		std::map<std::string, Channel *>::iterator start = 	this->_channels.begin();
+		std::map<std::string, Channel *>::iterator fin = 	this->_channels.end();
+		std::cout << "channel list :\n";
+		while (start != fin)
+		{
+			std::cout << start->first << " => " << start->second << std::endl;
+			start++;
+		}
+		std::cout << "end of channel list\n";
 		std::cout << "Channel list et Command_list a faire\n";
+
 		std::cout << "_list_connected_users: ";
 		for (int i = 0; i < this->_list_connected_users.size(); i++)
 		{
@@ -458,7 +482,7 @@ std::string		ft::Server::strToUpper(std::string str_target)
 	void	ft::Server::print_server(void)
 	{
 		std::cout << PURPLE << "SERVER:\n----------\n";
-		print_epoll_setup();
+		//print_epoll_setup();
 		print_part4();
 		std::cout << "\n-----END OF SERVER CHECK-------\n";
 	}

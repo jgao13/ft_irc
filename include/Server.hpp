@@ -122,7 +122,7 @@ namespace ft
 			std::map<int , User *>			_userList;
 			//std::map<int, User *>			_nickList;
 			std::string						_serverName;
-			std::map<std::string, Channel *>	_channelList;
+			std::map<std::string, Channel *>	_channels;
 			Command_List					_commands;
 			std::vector<std::string>		_list_connected_users;
 
@@ -139,6 +139,7 @@ namespace ft
 			User *				getUserByFd(int sfd) const;
 			User *				getUserByName(std::string const nickname) const;
 			Channel *			getChannelByName(std::string const channelName) const;
+
 			std::string			strToUpper(std::string const str_target);
 			// bool				isInRegistrationList(std::string) const;
 			// On a besoin de lui pour 
@@ -155,8 +156,12 @@ namespace ft
 			void	invite(User * user, Command *cmd);
 			void	topic(User *user, Command *cmd);
 			void	whois(User *user, Command *cmd);
+			void	ping(User * user, Command *  cmd);
+			void	mode(User * user, Command *  cmd);
+			void    privmsg(User *user, Command *cmd);
 
-
+			//par rapport au channel
+			void addChannel(const std::string& channelName, Channel * channel);
 			/* DEBUG */
 			// void	clearFd() {close(socket_fd); close(epoll_fd);}
 	};
