@@ -18,11 +18,11 @@ void Server::join(User* user, Command* cmd)
 		user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NOTREGISTERED, user)));
 		return;
 	}
-			if (cmd->arguments().size() == 0 ) 
-		{
-			user->sendMsg("461 " + user->getNickname() + " JOIN :Not enough parameters\r\n");
-			return;
-		}
+	if (cmd->arguments().size() == 0 ) 
+	{
+		user->sendMsg("461 " + user->getNickname() + " JOIN :Not enough parameters\r\n");
+		return;
+	}
 	// Vérifier le nombre d'arguments de la commande JOIN
 	// if (cmd->arguments().size() == 0 ) {
 	// 	user->sendMsg("461 " + user->getNickname() + " JOIN :Not enough parameters\r\n");

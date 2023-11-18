@@ -23,10 +23,9 @@ namespace ft
 		_commands["WHOIS"] = &Server::whois;
 		_commands["INVITE"] = &Server::invite;
 		_commands["PRIVMSG"] = &Server::privmsg;
+		_commands["PART"] = &Server::part;
 		print_server();
 
-
-		// socket_fd = _network.init_server_socket(_port);
 	}
 
 	Server::~Server()
@@ -40,6 +39,18 @@ namespace ft
 	{
 		_channels.insert(std::pair<std::string, Channel *>(channelName, channel));
     	//_channelList[channelName] = channel;
+	}
+
+	void Server::removeChannel(const std::string& channelName)
+	{
+		std::map<std::string, Channel*>::iterator it = _channels.find(channelName);
+		if (it != _channels.end())
+		{
+			delete it->second;
+			_channels.erase(it);
+		} 
+		else 
+			std::cerr << "ft::Server::removeChannel called on nothing, which should not happen\n";
 	}
 
 	int	Server::accept_connexion() 
@@ -211,84 +222,6 @@ namespace ft
 		return 0;
 	}
 
-	// int		Server::run_Server()
-	// {
-	// 	std::cout << ORANGE << "Polling for input...\n" << RESET;
-	// 	int event_count = epoll_wait(_epoll_fd, events, MAX_EVENTS, 60 * 3 * 1000);
-	// 	// if (DEBUG)
-	// 	// {
-	// 	// 	int j = 0;
-	// 	// 	for (int i = 0; events[i].events != 0; i++)
-	// 	// 		j++;
-	// 	// 	std::cout << SILVER << "EPOLL WAIT STUFF\n----------\n" << " MAXEVENT== "
-	// 	// 	<< MAX_EVENTS << ", NUMBER OF EVENTS == " << j << RESET << std::endl;
-	// 	// }
-	// 	std::cout << GREEN << "EVENT COUNT == " << event_count << RESET << "\n"; 
-	// 	if (event_count == -1)
-	// 		throw(std::runtime_error("epoll_wait a merdé\n"));
-	// 	for (int i = 0; i < event_count; i++)
-	// 	{
-	// 		std::cout << ORANGE << "Reading FILE DESCRIPTOR '" << events[i].data.fd << RESET << "'\n";
-	// 		if (events[i].data.fd == STDIN_FILENO) 
-	// 		{
-	// 		// Handle standard input
-	// 			handleStdinInput();
-	// 		    // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	// 		}
-	// 		else 
-	// 		{
-	// 		if ((events[i].events & EPOLLERR) ||
-	// 			(events[i].events & EPOLLHUP) ||
-	// 				(!(events[i].events & EPOLLIN)))
-	// 		{
-	// 			/* An error has occured on this fd, or the socket is not
-	// 				ready for reading (why were we notified then?) */
-	// 			std::cerr << "Epoll error\n";
-
-	// 			close (events[i].data.fd);
-	// 			continue;
-	// 		}
-	// 		// // #STDIN debug
-	// 		// if (events[i].data.fd == STDIN_FILENO) 
-	// 		// {
-	// 		// // Handle standard input
-	// 		// 	handleStdinInput();
-	// 		//     // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	// 		// }
-	// 		if (events[i].data.fd == _server_fd)
-	// 		{
-
-	// 			int ret = accept_connexion();
-	// 			if (ret == -1)
-	// 				std::cerr << "Connexion could not be accepted, some function f'ed up\n";
-	// 		}
-	// 		else
-	// 		{
-	// 			_done = 0;
-	// 			read_stuff_from_socket(i);
-	// 			if (_done)
-	// 			{
-	// 				//TO DO::: VIRER LE USER QUI A LE FD CORRESPONDANT DE TOUTES LES LISTES
-	// 				std::cout << "Closed connection on descriptor " << events[i].data.fd
-	// 				<< std::endl;
-	// 				/* Closing the descriptor will make epoll remove it
-	// 					from the set of descriptors which are monitored. */
-	// 				close (events[i].data.fd);
-	// 			}
-	// 			//fonction remove users
-	// 		}
-	// 		_done = 0;
-	// 		}
-
-	// 	}
-
-	// 	/* ICI, faire clean exit*/
-	// 	// free (events);
- 	// 	// close (socket_fd);
-	// 	return (0);
-	// 	//   return EXIT_SUCCESS;
-	// }
-
 	void	Server::read_stuff_from_socket(int index)
 	{
 		ssize_t count;
@@ -381,6 +314,7 @@ namespace ft
 		Command	cmd(message, this, user);
 		// if (cmd.getCmd() == NULL)
 		// 	return ;
+
 		if (DEBUG) 
 		{
 			std::cout << GREEN << "\n*** | SERVER | ***\n" << RESET;
@@ -420,22 +354,14 @@ namespace ft
 
 	std::string		Server::password() const {return _password;}
 	std::string		Server::name() const {return _serverName;}
-	// bool			Server::isInRegistrationList() const (std::string username)
-	// {
-	// 	if (_registration_list.count(std::toUpper(username)))
-	// 		return (true);
-	// 	return (false);
-	// }
-
-	// User *			Server::getUserByFd(int ufd) const
-	// {
-	// for (std::map<int, User *>::iterator it = _user.begin(); it != users.end(); ++it)
-	// 	if ((*it).second->getNickname() == nick)
-	// 		return (*it).second;
-	// return NULL;	}
-
 
 }
+
+    void    ft::Server::removeUser(User *user)
+	{
+		
+	}
+
 
 	ft::User *	ft::Server::getUserByName(std::string const nickname) const
 	{
@@ -639,6 +565,45 @@ std::string		ft::Server::strToUpper(std::string str_target)
 		std::cout << " - print_this_user [username]" << std::endl;
 		std::cout << RESET; // Reset to default color
 	}
+
+	#include "../include/Colors.hpp"  // Include the Colors.hpp for color definitions
+
+// ...
+
+// int ft::Server::print_command(Command * cmd const &)
+// {
+//     std::cout << VIOLET; // Set text color to VIOLET
+//     std::cout << "Command Information:" << std::endl;
+//     std::cout << "  Command: " << _command << std::endl;
+
+//     std::cout << "  Arguments: ";
+//     for (size_t i = 0; i < _arguments.size(); ++i) {
+//         std::cout << _arguments[i];
+//         if (i < _arguments.size() - 1) {
+//             std::cout << ", ";
+//         }
+//     }
+//     std::cout << std::endl;
+
+//     std::cout << "  Message: " << _message << std::endl;
+//     std::cout << "  Prefix: " << _prefix << std::endl;
+
+//     // If you want to print information about the associated user or server, you can do so here
+//     // For example:
+//     // if (_user) {
+//     //     std::cout << "  User: " << _user->nickname() << std::endl;
+//     // }
+//     // if (_server) {
+//     //     std::cout << "  Server: " << _server->name() << std::endl;
+//     // }
+
+//     std::cout << RESET; // Reset text color to default
+//     return 0;
+// }
+
+
+
+
 
 
 

@@ -113,7 +113,10 @@ private:
     void	ping(User * user, Command *  cmd);
     void	mode(User * user, Command *  cmd);
     void    privmsg(User *user, Command *cmd);
+    void    part(User *user, Command *cmd);
     void	addChannel(const std::string& channelName, Channel * channel);
+    void    removeChannel(const std::string& channelName);
+    void    removeUser(User *user);
 
     // DEVELOPMENT (AKA COMMENT OUT FOR CORRECTION)
 private:

@@ -1,4 +1,5 @@
 #include "../include/Command.hpp"
+// #include "../include/Color.hpp"
 
 namespace	ft
 {
@@ -26,9 +27,7 @@ namespace	ft
 		_arguments.erase(_arguments.begin());
 		_command = strToUpper(_command);
 		if (DEBUG)
-		{
-			// print_command(&this);
-		}
+			print_command();
 	}
 
 	//	GETTERS
@@ -40,15 +39,34 @@ namespace	ft
 	Command::Command(){/*This shouldn't be used*/}
 	Command::~Command() {}
 
-	int Command::print_command(){
-    std::cout << "Command: " << _command << std::endl;
-    std::cout << "Arguments: ";
-    for (std::vector<std::string>::const_iterator it = _arguments.begin(); it!= _arguments.end(); ++it)
-    {
-        std::cout << "|" << *it << "| ";
-    }
-    std::cout << std::endl;
-    std::cout << "Message: " << _message << std::endl;
-    return (0);
-    }
+	int Command::print_command() 
+	{
+		std::cout << PURPLE;
+		std::cout << "Command Information:" << std::endl;
+		std::cout << "  Command: " << _command << std::endl;
+
+		std::cout << "  Arguments: ";
+		for (size_t i = 0; i < _arguments.size(); ++i) {
+			std::cout << _arguments[i];
+			if (i < _arguments.size() - 1) {
+				std::cout << ", ";
+			}
+		}
+		std::cout << std::endl;
+
+		std::cout << "  Message: " << _message << std::endl;
+		std::cout << "  Prefix: " << _prefix << std::endl;
+
+		// If you want to print information about the associated user or server, you can do so here
+		// For example:
+		// if (_user) {
+		//     std::cout << "  User: " << _user->nickname() << std::endl;
+		// }
+		// if (_server) {
+		//     std::cout << "  Server: " << _server->name() << std::endl;
+		// }
+
+		std::cout << RESET; // Reset text color to default
+		return 0;
+	}
 }

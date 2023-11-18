@@ -71,6 +71,8 @@ namespace ft
 	class User
 	{
 		public:
+			typedef std::map<std::string, Channel*>::iterator channel_iterator;
+
 			enum Status
 			{
 				PASSWORD = 0,
@@ -109,6 +111,8 @@ namespace ft
 			std::string	getLastName();
 			std::string	printStatus();
 			Channel * 	getCurrentChannel(User* user);
+			Channel*	getChannelByName(std::string const channelName) const;
+
 
 			//channel
     		bool isInvitedTo(const std::string& channelName) const;

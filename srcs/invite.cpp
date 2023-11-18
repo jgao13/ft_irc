@@ -1,9 +1,20 @@
 #include "../include/Server.hpp"
 
 namespace ft{
-void Server::invite(User* sender, Command* cmd) {
+void Server::invite(User* sender, Command* cmd)
+{
     // Vérifie que l'utilisateur est bien enregistré
-    if (sender->printStatus() != "REGISTER") {
+
+	if (sender->printStatus() == "PASSWORD")
+	{
+		sender->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NOTREGISTERED, user)));
+
+		// user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_PASSWDMISMATCH, user)));
+		return;
+	}
+
+    if (sender->printStatus() == "REGISTER")
+    {
         sender->sendMsg("451 ERR_NOTREGISTERED :You have not registered\r\n");
         return;
     }

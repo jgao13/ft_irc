@@ -62,7 +62,6 @@ namespace ft
 		}
 		}
 
-			//print old NICK new (source chat gpt tu connais)
 			user->sendMsg("TA BIEN CHANGER DE PSEUDO FDP\r\n"); 
 			user->setNickname(nick);
 

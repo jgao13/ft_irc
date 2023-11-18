@@ -59,11 +59,11 @@ namespace ft
 
 	void Channel::sendMessageToMembers(const std::string& message)
 	{
-		// for (std::map<std::string, User*>::iterator it = _members.begin(); it != _members.end(); ++it)
-		// {
-		// 	User* user = it->second;
-		// 	user->sendMsg(message);
-		// }
+		for (std::map<std::string, User*>::iterator it = _members.begin(); it != _members.end(); ++it)
+		{
+			User* user = it->second;
+			user->sendMsg(message);
+		}
 	}
 	std::string Channel::getTopic()
     {

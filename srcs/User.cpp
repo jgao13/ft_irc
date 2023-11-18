@@ -113,7 +113,6 @@ namespace ft
 void User::joinChannel(Channel* channel) {
     // Ajoute l'utilisateur au canal
     _channels[channel->getName()] = channel;
-    // Vous pouvez également effectuer d'autres actions ici, comme l'ajout de l'utilisateur aux opérateurs, etc.
 }
 
 Channel* User::getCurrentChannel(User* user) {
@@ -130,4 +129,17 @@ Channel* User::getCurrentChannel(User* user) {
     }
     return NULL;
 }
+
+Channel* User::getChannelByName(std::string const channelName) const
+ {
+ 	std::map<std::string, ft::Channel *>::const_iterator it = _channels.find(channelName);
+ 	if (it == _channels.end())
+ 		return NULL;
+ 	else
+ 		return it->second;
+ }
+// void User::quitChannel(const std::string& channelName)
+// {
+
+// }
 };
