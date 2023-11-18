@@ -19,8 +19,6 @@ int	main(int ac, char **av)
 		return -(1);
 	}
 
-	// (void)av;
-
 	try 
 	{
 		ft::Server	server(av[1], av[2]);
@@ -40,7 +38,6 @@ int	main(int ac, char **av)
 		return (-1);
 		// server.clearFd();
 	}
-
 	return(0);
 }
 
@@ -70,7 +67,3 @@ int	main(int ac, char **av)
 			// ya moyen quon s'en tape, par contre gestion de crlf pour notre pomme
 			// 11-3 si count de read == 0, the remote has closed the connection
 			// 11-4: La du coup on peut ecrire ce quon a recu
-/*
-		ORDRE:
-	1.
-*/

@@ -31,7 +31,6 @@ namespace ft
 		//std::cout << "on est rentrer dans la commande nick \n\n\n\n\n\n\n\n";
 		if (user->printStatus() == "PASSWORD")
 		{
-			
 			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NEEDMOREPARAMS, user)));
 			// user->_buffer.clear();
 			return;

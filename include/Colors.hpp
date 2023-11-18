@@ -1,3 +1,9 @@
+// SILVER == retour de la fonction
+// GREEN == tout ce qui est lancé par la classe Server
+// ORANGE == Tout ce qui est lancé par User
+// BLUE == Tout ce qui est lancé par Channel
+// VIOLET == Command Class et toutes les commandes
+
 #ifndef COLORS_FT
 #define COLORS_FT
 // # ------ GRIS ------ #
