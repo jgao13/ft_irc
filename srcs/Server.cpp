@@ -144,6 +144,16 @@ namespace ft
 		this->_epoll_fd = epoll_create1(0);
 		if (_epoll_fd == -1)
 			throw (std::runtime_error("Failed to create epoll file descriptor\n"));
+		// #STDIN input begin
+		fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
+		struct epoll_event stdin_event;
+		stdin_event.events = EPOLLIN; // We're interested in read events
+		stdin_event.data.fd = STDIN_FILENO;
+
+		if (epoll_ctl(_epoll_fd, EPOLL_CTL_ADD, STDIN_FILENO, &stdin_event) == -1)
+    		throw std::runtime_error("Failed to add stdin to epoll set");
+		// #STDIN input end
+
 		std::cout << "EPOLL_FD == " << _epoll_fd << std::endl;
 		event.events = EPOLLIN;
 		event.data.fd = _server_fd;
@@ -152,69 +162,133 @@ namespace ft
 		return (0);
 	}
 	
-	int		Server::run_Server()
-	{
+	int Server::run_Server() {
 		std::cout << ORANGE << "Polling for input...\n" << RESET;
 		int event_count = epoll_wait(_epoll_fd, events, MAX_EVENTS, 60 * 3 * 1000);
-		// if (DEBUG)
-		// {
-		// 	int j = 0;
-		// 	for (int i = 0; events[i].events != 0; i++)
-		// 		j++;
-		// 	std::cout << SILVER << "EPOLL WAIT STUFF\n----------\n" << " MAXEVENT== "
-		// 	<< MAX_EVENTS << ", NUMBER OF EVENTS == " << j << RESET << std::endl;
-		// }
-		std::cout << GREEN << "EVENT COUNT == " << event_count << RESET << "\n"; 
-		if (event_count == -1)
-			throw(std::runtime_error("epoll_wait a merdé\n"));
-		for (int i = 0; i < event_count; i++)
-		{
-			std::cout << ORANGE << "Reading FILE DESCRIPTOR '" << events[i].data.fd << RESET << "'\n";
-			if ((events[i].events & EPOLLERR) ||
-				(events[i].events & EPOLLHUP) ||
-					(!(events[i].events & EPOLLIN)))
-			{
-				/* An error has occured on this fd, or the socket is not
-					ready for reading (why were we notified then?) */
-				std::cerr << "Epoll error\n";
-
-				close (events[i].data.fd);
-				continue;
-			}
-			if (events[i].data.fd == _server_fd)
-			{
-
-				int ret = accept_connexion();
-				if (ret == -1)
-					std::cerr << "Connexion could not be accepted, some function f'ed up\n";
-			}
-			else
-			{
-				_done = 0;
-				read_stuff_from_socket(i);
-				if (_done)
-				{
-					//TO DO::: VIRER LE USER QUI A LE FD CORRESPONDANT DE TOUTES LES LISTES
-					std::cout << "Closed connection on descriptor " << events[i].data.fd
-					<< std::endl;
-					/* Closing the descriptor will make epoll remove it
-						from the set of descriptors which are monitored. */
-					close (events[i].data.fd);
-				}
-				//fonction remove users
-			}
-			_done = 0;
-
+		
+		if (event_count == -1) {
+			std::cerr << GREEN << "Error in epoll_wait: " << strerror(errno) << RESET << std::endl;
+			throw(std::runtime_error("epoll_wait failed"));
 		}
 
-		/* ICI, faire clean exit*/
-		// free (events);
- 		// close (socket_fd);
-		return (0);
-		//   return EXIT_SUCCESS;
+		std::cout << GREEN << "EVENT COUNT == " << event_count << RESET << "\n"; 
+		for (int i = 0; i < event_count; i++) {
+			std::cout << GREEN << "Event on FD: " << events[i].data.fd;
+			std::cout << ", Events: " << events[i].events << RESET << std::endl;
+
+			if (events[i].data.fd == STDIN_FILENO)
+			{
+				std::cout << GREEN << "Handling input from STDIN" << RESET << std::endl;
+				handleStdinInput();
+			} 
+			else 
+			{
+				if ((events[i].events & EPOLLERR) || (events[i].events & EPOLLHUP) || (!(events[i].events & EPOLLIN))) 
+				{
+					std::cerr << RED << "Epoll error on FD: " << events[i].data.fd << RESET << std::endl;
+					close(events[i].data.fd);
+					continue;
+				}
+
+				if (events[i].data.fd == _server_fd) {
+					std::cout << GREEN << "Accepting new connection" << RESET << std::endl;
+					int ret = accept_connexion();
+					if (ret == -1) {
+						std::cerr << RED << "Connection acceptance failed" << RESET << std::endl;
+					}
+				} else {
+					_done = 0;
+					read_stuff_from_socket(i);
+					if (_done) {
+						std::cout << GREEN << "Closing connection on descriptor " << events[i].data.fd << RESET << std::endl;
+						close(events[i].data.fd);
+					}
+				}
+			}
+			_done = 0;
+		}
+
+		return 0;
 	}
 
-	// Used to 
+	// int		Server::run_Server()
+	// {
+	// 	std::cout << ORANGE << "Polling for input...\n" << RESET;
+	// 	int event_count = epoll_wait(_epoll_fd, events, MAX_EVENTS, 60 * 3 * 1000);
+	// 	// if (DEBUG)
+	// 	// {
+	// 	// 	int j = 0;
+	// 	// 	for (int i = 0; events[i].events != 0; i++)
+	// 	// 		j++;
+	// 	// 	std::cout << SILVER << "EPOLL WAIT STUFF\n----------\n" << " MAXEVENT== "
+	// 	// 	<< MAX_EVENTS << ", NUMBER OF EVENTS == " << j << RESET << std::endl;
+	// 	// }
+	// 	std::cout << GREEN << "EVENT COUNT == " << event_count << RESET << "\n"; 
+	// 	if (event_count == -1)
+	// 		throw(std::runtime_error("epoll_wait a merdé\n"));
+	// 	for (int i = 0; i < event_count; i++)
+	// 	{
+	// 		std::cout << ORANGE << "Reading FILE DESCRIPTOR '" << events[i].data.fd << RESET << "'\n";
+	// 		if (events[i].data.fd == STDIN_FILENO) 
+	// 		{
+	// 		// Handle standard input
+	// 			handleStdinInput();
+	// 		    // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	// 		}
+	// 		else 
+	// 		{
+	// 		if ((events[i].events & EPOLLERR) ||
+	// 			(events[i].events & EPOLLHUP) ||
+	// 				(!(events[i].events & EPOLLIN)))
+	// 		{
+	// 			/* An error has occured on this fd, or the socket is not
+	// 				ready for reading (why were we notified then?) */
+	// 			std::cerr << "Epoll error\n";
+
+	// 			close (events[i].data.fd);
+	// 			continue;
+	// 		}
+	// 		// // #STDIN debug
+	// 		// if (events[i].data.fd == STDIN_FILENO) 
+	// 		// {
+	// 		// // Handle standard input
+	// 		// 	handleStdinInput();
+	// 		//     // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	// 		// }
+	// 		if (events[i].data.fd == _server_fd)
+	// 		{
+
+	// 			int ret = accept_connexion();
+	// 			if (ret == -1)
+	// 				std::cerr << "Connexion could not be accepted, some function f'ed up\n";
+	// 		}
+	// 		else
+	// 		{
+	// 			_done = 0;
+	// 			read_stuff_from_socket(i);
+	// 			if (_done)
+	// 			{
+	// 				//TO DO::: VIRER LE USER QUI A LE FD CORRESPONDANT DE TOUTES LES LISTES
+	// 				std::cout << "Closed connection on descriptor " << events[i].data.fd
+	// 				<< std::endl;
+	// 				/* Closing the descriptor will make epoll remove it
+	// 					from the set of descriptors which are monitored. */
+	// 				close (events[i].data.fd);
+	// 			}
+	// 			//fonction remove users
+	// 		}
+	// 		_done = 0;
+	// 		}
+
+	// 	}
+
+	// 	/* ICI, faire clean exit*/
+	// 	// free (events);
+ 	// 	// close (socket_fd);
+	// 	return (0);
+	// 	//   return EXIT_SUCCESS;
+	// }
+
 	void	Server::read_stuff_from_socket(int index)
 	{
 		ssize_t count;
@@ -247,31 +321,6 @@ namespace ft
 			processMsgEvent(buffer, events[index].data.fd);
 			std::string delimiter("\r\n");
 			size_t position;
-			// TOUTE CETTE BOUCLE SERT PLUS A RIEN
-		// 	while ((position = buffer.find(delimiter)) != std::string::npos)
-		// 	{
-		// 		std::string message = buffer.substr(0, position);
-		// 		buffer.erase(0, position + delimiter.length());
-		// 		if (!message.length())
-		// 			continue;
-
-		// 		// commands.push_back(new Command(this, server, message));
-		// 		else 
-		// 		{
-		// 			std::cout << SILVER << "MESSAGE RECU PAR LE SERVER: \n-----------\n" << RESET;
-		// 			print_f_all(message);
-		// 			std::cout << SILVER << "\n-------------\n" << RESET;
-					
-		// 			std::string		command;
-		// 			command = message.substr(0, message.find_first_of("\r\n"));
-		// 			// command_JOIN(command, _userList[events[index].data.fd]);
-		// 			std::cout << "MESSAGE AVANT ERASE:" << message << std::endl;
-		// 			message = message.erase(0, message.find_first_of("\r\n"));
-		// 			std::cout << "MESSAGE apres ERASE:" << message << std::endl;
-		// 			command = message.substr(0, message.find_first_of("\r\n"));
-		// 			// command_JOIN(command, _userList[events[index].data.fd]);
-		// 		}
-		// 	}
 		}
 	}
 
@@ -491,6 +540,108 @@ std::string		ft::Server::strToUpper(std::string str_target)
 	{
 		return (_password);
 	}
+
+	// void ft::Server::handleStdinInput()
+	// {
+	// 	std::string command;
+	// 	std::getline(std::cin, command);
+
+	// 	if (command == "print_userlist") 
+	// 	{
+	// 		printUserList(); // Implement this method to print the user list
+	// 	}
+	// 	if (command == "print_channellist")
+	// 	{
+	// 		printChannelList();
+	// 	}
+	// 	if (command.find("print_this_user") != std::string::npos)
+	// 	{
+	// 		std::string user = command.substr(strlen("print_this_user") + 1);
+	// 		printUser(user);
+	// 	}
+		
+	// 	int c;
+	// 	while ((c = std::cin.get()) != '\n' && c != EOF) 
+	// 	{
+	// 	// Loop until the end of the line or end-of-file
+	// 	}
+	// }
+
+	void ft::Server::handleStdinInput() 
+	{
+    char buf[512];
+    ssize_t count = read(STDIN_FILENO, buf, sizeof(buf) - 1);
+
+    if (count > 0) {
+        buf[count] = '\0';
+        std::string command(buf);
+
+        if (command.find("print_userlist") != std::string::npos) {
+            printUserList();
+        } else if (command.find("print_channellist") != std::string::npos) {
+            printChannelList();
+        } else if (command.find("print_this_user") != std::string::npos) {
+            std::string user = command.substr(strlen("print_this_user") + 1);
+            printUser(user);
+        }
+    } else if (count == -1 && errno != EAGAIN && errno != EWOULDBLOCK) {
+        std::cerr << "Error reading from stdin" << std::endl;
+    }
+	}
+
+
+	void ft::Server::printChannelList()
+	{
+		std::cout << BLUE << "Channel List:" << std::endl;
+		for (std::map<std::string, Channel *>::const_iterator it = _channels.begin(); it != _channels.end(); ++it) {
+			std::cout << BLUE << "Channel Name: " << it->first << std::endl;
+		}
+		std::cout << RESET;
+	}
+
+	void ft::Server::printUserList()
+	{
+		std::cout << ORANGE << "User List:" << std::endl;
+		for (std::map<int, User *>::const_iterator it = _userList.begin(); it != _userList.end(); ++it)
+		{
+			std::cout << ORANGE << "User FD: " << it->first 
+					<< ", User: " << it->second->nickname() << std::endl;
+		}
+		std::cout << RESET; // Reset color
+	}
+
+	void ft::Server::printUser(const std::string& username)
+	{
+		User* user = getUserByName(username);
+		if (user == nullptr)
+		{
+			std::cout << "User not found: " << username << std::endl;
+			return;
+		}
+
+		std::cout << ORANGE << "User Information:" << std::endl;
+		std::cout << "Username: " << user->getUsername() << std::endl;
+		std::cout << "Nickname: " << user->getNickname() << std::endl;
+		std::cout << "Hostname: " << user->hostname() << std::endl;
+		std::cout << "First Name: " << user->getFirstName() << std::endl;
+		std::cout << "Last Name: " << user->getLastName() << std::endl;
+		std::cout << "Status: " << user->printStatus() << std::endl;
+		std::cout << "User FD: " << user->userfd() << std::endl;
+		std::cout << RESET;
+	}
+
+	void ft::Server::printAvailableCommands() 
+	{
+		std::cout << GRAY;
+		std::cout << "Available Commands:" << std::endl;
+		std::cout << " - print_userlist" << std::endl;
+		std::cout << " - print_channellist" << std::endl;
+		std::cout << " - print_this_user [username]" << std::endl;
+		std::cout << RESET; // Reset to default color
+	}
+
+
+
 //////////////fin de l'ajout du print 
 
 

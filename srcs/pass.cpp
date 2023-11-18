@@ -13,6 +13,11 @@ namespace ft
 			//std::cout << 462 << std::endl; //message d'erreur already register
 			return ;
 		}
+		if (user->printStatus() == "ONLINE")
+		{
+			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_ALREADYREGISTRED, user)));
+			return;
+		}
 		if (password.empty())
 		{
 			user->sendMsg("461 ERR_NEEDMOREPARAMS :Not enough parameters\r\n");
