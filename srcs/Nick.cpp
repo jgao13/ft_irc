@@ -14,7 +14,7 @@ namespace ft
 {
 	bool	invalideChar(std::string nickname)
 	{
-		const char *valid_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-"; //source chatgpt
+		const char *valid_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-";
 		for (int i = 0; i < nickname.length(); i++)
 		{
 			if (!std::strchr(valid_char, nickname[i]))
@@ -31,7 +31,9 @@ namespace ft
 		//std::cout << "on est rentrer dans la commande nick \n\n\n\n\n\n\n\n";
 		if (user->printStatus() == "PASSWORD")
 		{
-			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NEEDMOREPARAMS, user)));
+			// I never know what error code to send for this edgecase.
+			user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_PASSWDMISMATCH, user)));
+			// user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NEEDMOREPARAMS, user)));
 			// user->_buffer.clear();
 			return;
 		}
@@ -49,25 +51,29 @@ namespace ft
 		else
 		{
 			std::map<int, User *>::iterator it;
-		for (it = _userList.begin(); it != _userList.end(); it++)
-		{
-			std::cout << "USERLIST :" << it->second->getNickname() << "\n";
-			if (nick == it->second->getNickname())
+			for (it = _userList.begin(); it != _userList.end(); it++)
 			{
-				user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(432, user)));
-				std::cout << "c le meme pseudo\n\n";
-				return ;
+				std::cout << "USERLIST :" << it->second->getNickname() << "\n";
+				if (nick == it->second->getNickname())
+				{
+					user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(432, user)));
+					std::cout << "c le meme pseudo\n\n";
+					return ;
+				}
 			}
-
 		}
-		}
-
-			user->sendMsg("TA BIEN CHANGER DE PSEUDO FDP\r\n"); 
-			user->setNickname(nick);
-
-		if (DEBUG)
+		user->sendMsg("TA BIEN CHANGER DE PSEUDO FDP\r\n"); 
+		user->setNickname(nick);
+		if (user->printStatus() == "REGISTER" && !user->getUsername().empty())
 		{
-			// print_command(cmd);
+			user->setStatus(User::ONLINE);
+			// Numeric replies following a complete registration. I could have put it
+			// elsewhere but I'm a lazy piece of shit
+			user->sendMsg(user->getClient() + " :" + RPL_WELCOME(user->getNickname())); // NR 001
+			user->sendMsg(user->getClient() + " :" + RPL_YOURHOST(getServerName(), getVersion())); // NR 002
+			user->sendMsg(user->getClient() + " :" + RPL_CREATED(getCreationTime())); // NR 003
+			user->sendMsg(user->getClient() + RPL_MYINFO(getServerName(), VERSION, USER_MODES, CHAN_MODES)); // NR 004
+			
 		}
 	}
 }

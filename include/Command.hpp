@@ -34,6 +34,8 @@ namespace ft
 			std::vector<std::string>	arguments() const;
 			std::string					command() const;
 			std::string					message() const;
+			// returns everything after the COMMAND in the message
+			std::string					argument() const;
 			// DEBUG
 			int print_command();
 			// void						print_command(void);
@@ -45,6 +47,7 @@ namespace ft
 			std::vector<std::string>	_arguments;
 			std::string					_message;
 			std::string					_prefix;
+			std::string					_argument;
 			Server *					_server;
 			User *						_user;
 			bool	_error;

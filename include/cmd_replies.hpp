@@ -1,7 +1,7 @@
 #ifndef COMMANDREPLIES_HPP
 # define COMMANDREPLIES_HPP
 
-# define RPL_WELCOME(nick) (":Welcome to the Internet Relay Network " + nick)										//1
+# define RPL_WELCOME(nick) (":Welcome to the DeadProtChat Network, " + nick)										//1
 # define RPL_YOURHOST(servername, version) (":Your host is " + servername + ", running version " + version) 		//2
 # define RPL_CREATED(date) (":This server was created " + date)														//3
 # define RPL_MYINFO(servername, version, usr_modes, chann_modes) (":" + servername + " " + version + " " + usr_modes + " " + chann_modes) //4

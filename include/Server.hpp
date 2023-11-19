@@ -25,6 +25,7 @@
 #include "Message_Format.hpp"
 #include "cmd_err_replies.hpp"
 #include "cmd_replies.hpp"
+#include "Config.hpp"
 #include <fstream>
 
 #ifndef DEBUG
@@ -47,6 +48,9 @@ public:
 	Server(char * port, std::string password);
 	~Server();
 
+	typedef std::map<std::string, Channel*>::iterator channel_iterator;
+
+
 	// Methods to rename or get rid of if I have the time to do it
 	void			print_part4(void);
 	void			print_epoll_setup(void);
@@ -66,61 +70,70 @@ public:
 	User *			getUserByFd(int sfd) const;
 	User *			getUserByName(std::string const nickname) const;
 	Channel *		getChannelByName(std::string const channelName) const;
+	std::string		getVersion() const;
+	std::string		getServerName() const;
+	std::string		getCreationTime() const;
 	std::string		getPassword(void);
 	std::string		strToUpper(std::string const str_target);
+	bool            checkRegistratedUser(std::string const username);
+	void            registrationComplete(User * user);
+	void			disconnection_Notification(std::string name, std::string reason);
+
 
 
 
 
 
 private:
-    Network *		_network;
-    long int		_port;
-    int				_server_fd;
-    std::string		_password;
+	Network *		_network;
+	long int		_port;
+	int				_server_fd;
+	std::string		_password;
+	std::string		_version;
 
-    int		_epoll_fd;
-    int		_running;
-    epoll_event	events[MAX_EVENTS];
-    std::vector<int>	listen_list;
+	int		_epoll_fd;
+	int		_running;
+	epoll_event	events[MAX_EVENTS];
+	std::vector<int>	listen_list;
 
-    std::map<int , User *>			_userList;
-    std::map<std::string, Channel *>	_channels;
-    typedef	std::map<std::string, void	(Server::*) (User *, Command *)>	Command_List;
-    Command_List	_commands;
-    std::string		_serverName;
-    std::string		_creationTime;
-    bool		_done;
-    std::vector<std::string>	_list_connected_users;
+	std::map<int , User *>			_userList;
+	std::vector<std::string>	_registrated_users;
+	std::map<std::string, Channel *>	_channels;
+	typedef	std::map<std::string, void	(Server::*) (User *, Command *)>	Command_List;
+	Command_List	_commands;
+	std::string		_serverName;
+	std::string		_creationTime;
+	bool		_done;
 
-    void	initCreationTime();
-    int		accept_connexion();
-    void	processMsgEvent(std::string buffer, int user_fd);
-    void	disconnectUser(int userFd, std::string reason, bool isInvis);
-    // TO COMMENT OUT BECAUSE READ IS FORBIDDEN, THIS IS DUMB
-    void	read_stuff_from_socket(int index);
-    int		read_Event(int index);
+	void	initCreationTime();
+	int		accept_connexion();
+	void	processMsgEvent(std::string buffer, int user_fd);
+	void	disconnectUser(int userFd, std::string reason, bool isInvis);
+	// TO COMMENT OUT BECAUSE READ IS FORBIDDEN, THIS IS DUMB
+	void	read_stuff_from_socket(int index);
+	int		read_Event(int index);
 
-    void	cap(User * user, Command *  cmd);
-    void	join(User * user, Command *  cmd); 
-    void	pass(User * user, Command *  cmd);
-    void	nick(User * user, Command *  cmd);
-    void	user(User * user, Command *  cmd);
-    void	kick(User * user, Command * cmd);
-    void	invite(User * user, Command *cmd);
-    void	topic(User *user, Command *cmd);
-    void	whois(User *user, Command *cmd);
-    void	ping(User * user, Command *  cmd);
-    void	mode(User * user, Command *  cmd);
-    void    privmsg(User *user, Command *cmd);
-    void    part(User *user, Command *cmd);
-    void	addChannel(const std::string& channelName, Channel * channel);
-    void    removeChannel(const std::string& channelName);
-    void    removeUser(User *user);
+	void	cap(User * user, Command *  cmd);
+	void	quit(User * user, Command * cmd);
+	void	join(User * user, Command *  cmd); 
+	void	pass(User * user, Command *  cmd);
+	void	nick(User * user, Command *  cmd);
+	void	user(User * user, Command *  cmd);
+	void	kick(User * user, Command * cmd);
+	void	invite(User * user, Command *cmd);
+	void	topic(User *user, Command *cmd);
+	void	whois(User *user, Command *cmd);
+	void	ping(User * user, Command *  cmd);
+	void	mode(User * user, Command *  cmd);
+	void    privmsg(User *user, Command *cmd);
+	void    part(User *user, Command *cmd);
+	void	addChannel(const std::string& channelName, Channel * channel);
+	void    removeChannel(const std::string& channelName);
+	void    removeUser(User *user);
 
-    // DEVELOPMENT (AKA COMMENT OUT FOR CORRECTION)
+	// DEVELOPMENT (AKA COMMENT OUT FOR CORRECTION)
 private:
-    void	handleStdinInput(); // read is somehow forbidden here
+	void	handleStdinInput(); // read is somehow forbidden here
 
 };
 

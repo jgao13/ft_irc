@@ -39,7 +39,8 @@ namespace ft
 		_quit = false;
 		_flags = 0;
 		_useraddress = address;
-
+	    struct sockaddr_in* ipv4Addr = reinterpret_cast<struct sockaddr_in*>(&address);
+	    _hostname = inet_ntoa(ipv4Addr->sin_addr);
 	}
 
 	void	User::sendMsg(std::string message)
@@ -78,10 +79,12 @@ namespace ft
 	void		User::setStatus(User::Status status)	{_status = status;}
 	void		User::setUsername(std::string username)	{_username = username;}
 	int			User::getUserFd()						{return _userfd;}
-	std::string	User::getUsername()						{return _username;}
-	std::string	User::getNickname()						{return _nickname;}
-	std::string	User::getFirstName()					{return _first_name;}
-	std::string	User::getLastName()						{return _last_name;}
+	std::string	User::getUsername() const					{return _username;}
+	std::string	User::getNickname() const				{return _nickname;}
+	std::string	User::getFirstName() const 					{return _first_name;}
+	std::string	User::getLastName() 					{return _last_name;}
+    std::string	User::getHostname() const 					{ return _hostname; }
+
 	std::string	User::printStatus()						
 	{switch (_status)
 		{
@@ -138,6 +141,13 @@ Channel* User::getChannelByName(std::string const channelName) const
  	else
  		return it->second;
  }
+
+
+std::string		User::getClient()
+{
+       return getNickname() + "!" + getUsername() + "@" + getHostname();
+}
+
 // void User::quitChannel(const std::string& channelName)
 // {
 

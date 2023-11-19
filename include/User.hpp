@@ -105,10 +105,13 @@ namespace ft
 
 			/* GETTERS AND SETTERS */
 			int			getUserFd();
-			std::string	getUsername();
-			std::string	getNickname();
-			std::string	getFirstName();
+			std::string	getUsername() const;
+			std::string	getNickname() const;
+			std::string	getFirstName() const;
 			std::string	getLastName();
+			std::string	getHostname() const;	
+
+			std::string	getClient();
 			std::string	printStatus();
 			Channel * 	getCurrentChannel(User* user);
 			Channel*	getChannelByName(std::string const channelName) const;

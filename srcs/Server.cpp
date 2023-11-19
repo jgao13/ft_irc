@@ -12,6 +12,8 @@ namespace ft
 			throw (std::runtime_error("Invalid port (port must be within the range [1024, 65535])\n"));
 		_network = new Network(_port);
 		_server_fd = _network->getServerFd();
+		_version = "49.3";
+		_serverName = "DEADPROTOCOL chat server";
 		_commands["CAP"] = &Server::cap;
 		_commands["PASS"] = &Server::pass;
 		_commands["JOIN"] = &Server::join;
@@ -24,6 +26,7 @@ namespace ft
 		_commands["INVITE"] = &Server::invite;
 		_commands["PRIVMSG"] = &Server::privmsg;
 		_commands["PART"] = &Server::part;
+		_commands["QUIT"] = &Server::quit;
 		print_server();
 
 	}
@@ -34,6 +37,10 @@ namespace ft
 		// close(socket_fd);
 		// close(epoll_fd);
 	}
+
+	std::string		Server::getServerName() const {return _serverName;}
+	std::string		Server::getCreationTime() const {return _creationTime;}
+
 
 	void Server::addChannel(const std::string& channelName, Channel* channel)
 	{
@@ -156,13 +163,13 @@ namespace ft
 		if (_epoll_fd == -1)
 			throw (std::runtime_error("Failed to create epoll file descriptor\n"));
 		// #STDIN input begin
-		fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
-		struct epoll_event stdin_event;
-		stdin_event.events = EPOLLIN; // We're interested in read events
-		stdin_event.data.fd = STDIN_FILENO;
+		// fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
+		// struct epoll_event stdin_event;
+		// stdin_event.events = EPOLLIN; // We're interested in read events
+		// stdin_event.data.fd = STDIN_FILENO;
 
-		if (epoll_ctl(_epoll_fd, EPOLL_CTL_ADD, STDIN_FILENO, &stdin_event) == -1)
-    		throw std::runtime_error("Failed to add stdin to epoll set");
+		// if (epoll_ctl(_epoll_fd, EPOLL_CTL_ADD, STDIN_FILENO, &stdin_event) == -1)
+    	// 	throw std::runtime_error("Failed to add stdin to epoll set");
 		// #STDIN input end
 
 		std::cout << "EPOLL_FD == " << _epoll_fd << std::endl;
@@ -187,13 +194,13 @@ namespace ft
 			std::cout << GREEN << "Event on FD: " << events[i].data.fd;
 			std::cout << ", Events: " << events[i].events << RESET << std::endl;
 
-			if (events[i].data.fd == STDIN_FILENO)
-			{
-				std::cout << GREEN << "Handling input from STDIN" << RESET << std::endl;
-				handleStdinInput();
-			} 
-			else 
-			{
+			// if (events[i].data.fd == STDIN_FILENO)
+			// {
+			// 	std::cout << GREEN << "Handling input from STDIN" << RESET << std::endl;
+			// 	handleStdinInput();
+			// } 
+			// else 
+			// {
 				if ((events[i].events & EPOLLERR) || (events[i].events & EPOLLHUP) || (!(events[i].events & EPOLLIN))) 
 				{
 					std::cerr << RED << "Epoll error on FD: " << events[i].data.fd << RESET << std::endl;
@@ -215,7 +222,7 @@ namespace ft
 						close(events[i].data.fd);
 					}
 				}
-			}
+			// }
 			_done = 0;
 		}
 
@@ -333,6 +340,14 @@ namespace ft
 		(this->*(it->second))(user, &cmd);
 	}
 
+	void            Server::registrationComplete(User * user)
+	{
+		// std::string rpl_001 = user->getNickname() + " :Welcome to the " + getServerName() " Network, "
+		// + 
+		// user->sendMsg(serverMessageBuilder(this,
+	}
+
+
 	void			Server::disconnectUser(int userFd, std::string reason, bool isInvis)
 	{
 		struct epoll_event	ev = {};
@@ -340,27 +355,56 @@ namespace ft
 		if (ret < 0)
 		{
 			std::cout << "Could not delete event(epoll_ctl failed), reason == ";
-			// std::cout << "ERRNO == " << errno << ", LETTER CODE == " << strerrorname_np(errno) << std::endl;
 			return;
 		}
 		std::cout << "disconnecting " << userFd << std::endl;
-		// A finir, mais en gros, il fait notifier tt le monde du channel
-		// Virer le User de Users et de UsersFd
-		// Virer de la liste de user du Channel
-		//if (!isInvis)
-			//disconnection_Notification(userFd, reason);
+		if (getUserByFd(userFd) != NULL)
+			return;
+		std::string	name = getUserByFd(userFd)->getNickname();
+		delete getUserByFd(userFd);
+		_userList.erase(userFd);
+		if (!isInvis)
+			disconnection_Notification(name, reason);
 	}
 
+	void		Server::disconnection_Notification(std::string name, std::string reason)
+	{
+		if (reason.empty())
+			reason = "Connection closed remotely";
+		for (std::map<int, User*>::iterator it = _userList.begin(); it != _userList.end(); it++)
+		{
+			it->second->sendMsg(name + " is exiting with the reason: " + reason);
+		}
+	}
 
 	std::string		Server::password() const {return _password;}
 	std::string		Server::name() const {return _serverName;}
 
 }
 
-    void    ft::Server::removeUser(User *user)
-	{
+    // void    ft::Server::removeUser(User *user)
+	// {
+	// 	disconnectUser(user->getUserFd(), )
+	// 	close(user->getUserFd());
+	// 	delete user;
 		
+	// }
+
+    bool            ft::Server::checkRegistratedUser(std::string const username)
+	{
+		bool found = false;
+
+		for (size_t i = 0; i < _registrated_users.size(); ++i) {
+			if (_registrated_users[i] == username) 
+			{
+				found = true;
+				// Element found, can break the loop if only need to find one occurrence
+				break;
+			}
+		}
+		return (found);
 	}
+
 
 
 	ft::User *	ft::Server::getUserByName(std::string const nickname) const
@@ -446,11 +490,11 @@ std::string		ft::Server::strToUpper(std::string str_target)
 		std::cout << "Channel list et Command_list a faire\n";
 
 		std::cout << "_list_connected_users: ";
-		for (int i = 0; i < this->_list_connected_users.size(); i++)
+		for (int i = 0; i < this->_registrated_users.size(); i++)
 		{
 			if (i != 0)
 				std::cout << ", ";
-			std::cout << this->_list_connected_users[i];
+			std::cout << this->_registrated_users[i];
 		}
 		std::cout << std::endl;
 	}
@@ -466,6 +510,8 @@ std::string		ft::Server::strToUpper(std::string str_target)
 	{
 		return (_password);
 	}
+	std::string		ft::Server::getVersion() const	{return _version;}
+
 
 	// void ft::Server::handleStdinInput()
 	// {

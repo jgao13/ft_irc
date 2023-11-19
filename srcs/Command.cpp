@@ -26,6 +26,8 @@ namespace	ft
 		_command = *(_arguments.begin());
 		_arguments.erase(_arguments.begin());
 		_command = strToUpper(_command);
+		for (int i = 0; i < _arguments.size(); ++i)
+			_argument += _arguments[i];
 		if (DEBUG)
 			print_command();
 	}
@@ -34,6 +36,7 @@ namespace	ft
 	std::vector<std::string>	Command::arguments() const {return (_arguments);}
 	std::string					Command::message() const {return (_message);}
 	std::string					Command::command() const {return (_command);}
+	std::string					Command::argument() const {return (_argument);}		
 
 	//	CONSTRUCTOR AND DESTRUCTOR
 	Command::Command(){/*This shouldn't be used*/}

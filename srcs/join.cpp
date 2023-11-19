@@ -8,7 +8,7 @@ void Server::join(User* user, Command* cmd)
 
 	if (user->printStatus() == "PASSWORD")
 	{
-		user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_NOTREGISTERED, user)));
+		user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_PASSWDMISMATCH, user)));
 
 		// user->sendMsg(serverMessageBuilder(this, commandMessageBuilder(CODE_ERR_PASSWDMISMATCH, user)));
 		return;

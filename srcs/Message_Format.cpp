@@ -137,9 +137,9 @@ namespace ft
 	{
 		std::string message("");
 
-		message += ":" + user->nickname();
-		message += "!" + user->username();
-		message += "@" + user->hostname();
+		message += ":" + user->getNickname();
+		message += "!" + user->getUsername();
+		message += "@" + user->getHostname();
 		message += " ";
 		message += content;
 		message += "\r\n";
