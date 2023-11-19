@@ -33,7 +33,7 @@ S_FILES		=	main.cpp	\
 				ping.cpp 			\
 				privmsg.cpp  		\
 				Part.cpp			\
-				Quit.cpp
+				quit.cpp
 				
 
 SRCS	=	$(addprefix $(S_DIR), $(S_FILES))
